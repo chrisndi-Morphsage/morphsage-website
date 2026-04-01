@@ -147,6 +147,7 @@
   .waitlist-btn { background:var(--teal); color:var(--charcoal); padding:.9rem 2rem; border:none; border-radius:2px; font-family:var(--fb); font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; font-weight:500; transition:opacity .25s; white-space:nowrap; }
   .waitlist-btn:hover { opacity:.88; }
   .waitlist-success { display:none; color:var(--teal); font-size:.9rem; margin-top:1rem; }
+  .waitlist-error { display:none; color:#f87171; font-size:.9rem; margin-top:1rem; }
   .cta { background:rgba(45,27,105,.2); border-top:1px solid rgba(0,201,177,.1); text-align:center; }
   .cta h2 { font-family:var(--fd); font-size:clamp(2.2rem,4.5vw,4rem); font-weight:300; line-height:1.1; margin-bottom:1.25rem; }
   .cta h2 em { font-style:italic; color:var(--teal); }
@@ -472,6 +473,7 @@
         <button class="waitlist-btn" onclick="submitWaitlist()" data-i18n="waitlist.btn">Join Waitlist</button>
       </div>
       <p class="waitlist-success" id="waitlistSuccess" data-i18n="waitlist.success">✓ You're on the list!</p>
+      <p class="waitlist-error" id="waitlistError" data-i18n="waitlist.error">Something went wrong. Please try again.</p>
     </div>
   </div>
 </section>
@@ -781,31 +783,35 @@ function scrollToWaitlist() {
 const EMAILJS_SERVICE_ID = 'service_9v37szc';
 const EMAILJS_TEMPLATE_ID = 'template_dc7n5zj';
 const EMAILJS_PUBLIC_KEY = 'O8flj3EBMSKoc2ED6';
-emailjs.init(EMAILJS_PUBLIC_KEY);
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 function submitWaitlist() {
   const email = document.getElementById('emailInput').value;
   const success = document.getElementById('waitlistSuccess');
+  const errorEl = document.getElementById('waitlistError');
+  const form = document.querySelector('.waitlist-form');
+  const btn = form.querySelector('.waitlist-btn');
   if(!email || !email.includes('@')) {
     document.getElementById('emailInput').style.borderColor = '#ff6b6b';
     setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 1500);
     return;
   }
+  btn.disabled = true;
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    name: 'Waitlist Signup',
-    email: email,
     from_name: 'Waitlist Signup',
     from_email: email,
     reply_to: email,
-    message: '🎉 New waitlist signup on morphsage.ai!! Email: ' + email
-  }, EMAILJS_PUBLIC_KEY).then(() => {
-    document.querySelector('.waitlist-form').style.display = 'none';
+    subject: 'New Waitlist Signup — morphsage.ai',
+    message: '🎉 New waitlist signup on morphsage.ai! Email: ' + email
+  }).then(() => {
+    form.style.display = 'none';
+    errorEl.style.display = 'none';
     success.textContent = i18n[currentLang]['waitlist.success'];
     success.style.display = 'block';
   }).catch(() => {
-    document.querySelector('.waitlist-form').style.display = 'none';
-    success.textContent = i18n[currentLang]['waitlist.success'];
-    success.style.display = 'block';
+    btn.disabled = false;
+    errorEl.textContent = i18n[currentLang]['waitlist.error'] || 'Something went wrong. Please try again.';
+    errorEl.style.display = 'block';
   });
 }
 
@@ -820,13 +826,12 @@ function submitContact(e) {
   const errorEl = document.getElementById('cf-error');
   btn.disabled = true;
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    name: name,
-    email: email,
     from_name: name,
     from_email: email,
     reply_to: email,
-    message: '📩 Subject: ' + subject + ' — From: ' + name + ' (' + email + ')\n\n' + message
-  }, EMAILJS_PUBLIC_KEY).then(() => {
+    subject: subject,
+    message: message
+  }).then(() => {
     successEl.style.display = 'block';
     errorEl.style.display = 'none';
     document.getElementById('contactForm').reset();
