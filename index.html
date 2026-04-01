@@ -808,7 +808,8 @@ function submitWaitlist() {
     errorEl.style.display = 'none';
     success.textContent = i18n[currentLang]['waitlist.success'];
     success.style.display = 'block';
-  }).catch(() => {
+  }).catch((err) => {
+    console.error('Waitlist EmailJS error:', err);
     btn.disabled = false;
     errorEl.textContent = i18n[currentLang]['waitlist.error'] || 'Something went wrong. Please try again.';
     errorEl.style.display = 'block';
@@ -836,7 +837,8 @@ function submitContact(e) {
     errorEl.style.display = 'none';
     document.getElementById('contactForm').reset();
     btn.disabled = false;
-  }).catch(() => {
+  }).catch((err) => {
+    console.error('Contact EmailJS error:', err);
     errorEl.style.display = 'block';
     btn.disabled = false;
   });
