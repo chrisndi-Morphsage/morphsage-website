@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morphsage — Demo Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:    #00C9B1;
+      --teal-dk: #00a898;
+      --charcoal:#1C1C2E;
+      --char-lt: #252538;
+      --char-md: #2e2e45;
+      --offwhite:#F4F4F6;
+      --muted:   #9191a8;
+    }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--charcoal);
+      color: var(--offwhite);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,201,177,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Logo */
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--offwhite); text-decoration: none;
+      letter-spacing: 0.02em; margin-bottom: 40px;
+    }
+    .logo span { color: var(--teal); }
+
+    /* Card */
+    .card {
+      width: 100%; max-width: 400px;
+      background: var(--char-lt);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px;
+      position: relative;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), rgba(0,201,177,0.2), transparent);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(0,201,177,0.1);
+      border: 1.5px solid rgba(0,201,177,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 1.3rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem; font-weight: 600;
+      text-align: center; margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center; color: var(--muted);
+      font-size: 0.88rem; line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--muted); letter-spacing: 0.07em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .input-wrap { position: relative; margin-bottom: 20px; }
+    input[type="password"] {
+      width: 100%; background: var(--char-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 12px 44px 12px 16px;
+      color: var(--offwhite); font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; outline: none;
+      transition: border-color .2s;
+    }
+    input[type="password"]:focus { border-color: rgba(0,201,177,0.5); }
+    input[type="password"]::placeholder { color: rgba(145,145,168,0.5); }
+
+    .toggle-pw {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); padding: 4px;
+      transition: color .2s;
+    }
+    .toggle-pw:hover { color: var(--offwhite); }
+    .toggle-pw svg { width: 17px; height: 17px; display: block; }
+
+    .btn {
+      width: 100%; padding: 13px;
+      background: var(--teal); color: var(--charcoal);
+      border: none; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.02em;
+      transition: background .2s, transform .15s, opacity .2s;
+    }
+    .btn:hover { background: var(--teal-dk); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: .5; cursor: default; transform: none; }
+
+    .error-msg {
+      margin-top: 14px; padding: 10px 14px;
+      background: rgba(255,79,79,0.1);
+      border: 1px solid rgba(255,79,79,0.25);
+      border-radius: 8px;
+      font-size: 0.82rem; color: #ff8888;
+      text-align: center; display: none;
+    }
+
+    .back-link {
+      margin-top: 24px; text-align: center;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .back-link a { color: var(--teal); text-decoration: none; }
+    .back-link a:hover { text-decoration: underline; }
+
+    /* Spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid rgba(28,28,46,0.3);
+      border-top-color: var(--charcoal);
+      animation: spin .6s linear infinite;
+      display: inline-block; vertical-align: middle; margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="logo">Morph<span>sage</span></a>
+
+  <div class="card">
+    <div class="card-icon">🔒</div>
+    <h1>Demo Access</h1>
+    <p class="subtitle">This demo is private.<br/>Enter your access password to continue.</p>
+
+    <label for="password">Password</label>
+    <div class="input-wrap">
+      <input type="password" id="password" placeholder="Enter access password" autocomplete="current-password" />
+      <button class="toggle-pw" id="toggle-pw" type="button" aria-label="Toggle password visibility">
+        <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="btn" id="login-btn" onclick="doLogin()">Enter Demo</button>
+    <div class="error-msg" id="error-msg">Incorrect password. Please try again.</div>
+  </div>
+
+  <div class="back-link">
+    <a href="/">← Back to morphsage.ai</a>
+  </div>
+
+<script>
+  // Show/hide password
+  document.getElementById('toggle-pw').addEventListener('click', () => {
+    const input = document.getElementById('password');
+    const icon  = document.getElementById('eye-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>`;
+    } else {
+      input.type = 'password';
+      icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+    }
+  });
+
+  // Submit on Enter
+  document.getElementById('password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  async function doLogin() {
+    const btn      = document.getElementById('login-btn');
+    const errEl    = document.getElementById('error-msg');
+    const password = document.getElementById('password').value;
+
+    if (!password) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Checking…';
+    errEl.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (res.ok) {
+        btn.innerHTML = '✓ Access granted — redirecting…';
+        const params = new URLSearchParams(window.location.search);
+        window.location.href = params.get('next') || '/demo';
+      } else {
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = 'Enter Demo';
+        document.getElementById('password').focus();
+      }
+    } catch {
+      errEl.textContent = 'Network error — please try again.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Enter Demo';
+    }
+  }
+</script>
+</body>
+</html>
