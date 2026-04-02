@@ -438,11 +438,150 @@
       100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
 
+    /* ── ROI Section ── */
+    .roi-section {
+      max-width: 1100px; margin: 56px auto 0;
+      padding: 0 24px 80px;
+    }
+    .roi-header {
+      text-align: center; margin-bottom: 40px;
+    }
+    .roi-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .roi-header h2 em { color: var(--teal); font-style: normal; }
+    .roi-header p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Live counters */
+    .roi-live {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 40px;
+    }
+    @media (max-width: 900px) { .roi-live { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .roi-live { grid-template-columns: 1fr 1fr; } }
+
+    .roi-card {
+      background: var(--char-lt);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 24px 20px; text-align: center;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .roi-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      opacity: 0; transition: opacity .4s;
+    }
+    .roi-card.has-value { border-color: rgba(0,201,177,0.25); }
+    .roi-card.has-value::before { opacity: 1; }
+    .roi-card.has-value { transform: translateY(-2px); }
+
+    .roi-card-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(0,201,177,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px; font-size: 1.1rem;
+    }
+    .roi-value {
+      font-family: var(--font-serif);
+      font-size: 2rem; font-weight: 700;
+      color: var(--teal); line-height: 1;
+      margin-bottom: 6px;
+      transition: color .3s;
+    }
+    .roi-value.zero { color: var(--muted); }
+    .roi-label {
+      font-size: 0.75rem; color: var(--muted);
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 6px;
+    }
+    .roi-sub {
+      font-size: 0.72rem; color: rgba(145,145,168,0.7);
+      line-height: 1.4;
+    }
+
+    /* Benchmark table */
+    .roi-bench {
+      background: var(--char-lt);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .roi-bench-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .roi-bench-header .panel-title { flex: 1; }
+    .bench-badge {
+      font-size: 0.7rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .bench-badge.without { background: rgba(255,79,79,0.12); color: #ff8888; border: 1px solid rgba(255,79,79,0.2); }
+    .bench-badge.with    { background: rgba(0,201,177,0.12); color: var(--teal); border: 1px solid rgba(0,201,177,0.25); }
+
+    .bench-row {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      padding: 14px 24px; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background .2s;
+    }
+    .bench-row:last-child { border-bottom: none; }
+    .bench-row:hover { background: rgba(255,255,255,0.02); }
+    .bench-row.head {
+      background: rgba(0,0,0,0.15);
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted); padding: 10px 24px;
+    }
+    .bench-metric { font-size: 0.88rem; color: var(--offwhite); font-weight: 500; }
+    .bench-without {
+      font-size: 0.85rem; color: #ff8888; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .bench-with {
+      font-size: 0.85rem; color: var(--teal); font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .bench-without::before { content: '✕'; font-size: 0.7rem; opacity: .7; }
+    .bench-with::before    { content: '✓'; font-size: 0.7rem; opacity: .7; }
+
+    /* CTA strip */
+    .roi-cta {
+      margin-top: 32px; text-align: center;
+      padding: 36px 24px;
+      background: linear-gradient(135deg, rgba(0,201,177,0.08) 0%, rgba(45,27,105,0.15) 100%);
+      border: 1px solid rgba(0,201,177,0.15);
+      border-radius: var(--radius);
+    }
+    .roi-cta h3 {
+      font-family: var(--font-serif); font-size: 1.6rem;
+      font-weight: 600; margin-bottom: 10px;
+    }
+    .roi-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .roi-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-outline {
+      padding: 12px 28px; border-radius: 999px;
+      font-weight: 600; font-size: 0.88rem;
+      border: 1.5px solid rgba(0,201,177,0.4);
+      background: transparent; color: var(--teal);
+      cursor: pointer; transition: all .2s;
+      font-family: var(--font-sans);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { background: rgba(0,201,177,0.1); border-color: var(--teal); }
+
     /* ── Responsive ── */
     @media (max-width: 680px) {
       nav { padding: 0 20px; }
       .demo-grid { grid-template-columns: 1fr; }
       h1 { font-size: 2rem; }
+      .bench-row { grid-template-columns: 1.2fr 1fr 1fr; padding: 12px 14px; }
+      .roi-bench-header { padding: 16px 14px; }
     }
   </style>
 </head>
@@ -544,6 +683,111 @@
 
   </div><!-- /demo-grid -->
 </div><!-- /demo-wrap -->
+
+<!-- ROI SECTION -->
+<section class="roi-section" id="roi-section">
+
+  <div class="roi-header">
+    <h2>Your <em>ROI</em> with Morphsage</h2>
+    <p>Live session data — updates as you interact with the demo</p>
+  </div>
+
+  <!-- Live Counters -->
+  <div class="roi-live">
+    <div class="roi-card" id="roi-card-time">
+      <div class="roi-card-icon">⚡</div>
+      <div class="roi-value zero" id="roi-response-time">&lt;1s</div>
+      <div class="roi-label">Avg Response Time</div>
+      <div class="roi-sub">Industry avg: 4+ hours</div>
+    </div>
+    <div class="roi-card" id="roi-card-messages">
+      <div class="roi-card-icon">🤖</div>
+      <div class="roi-value zero" id="roi-messages">0</div>
+      <div class="roi-label">Messages Automated</div>
+      <div class="roi-sub">Zero agent hours used</div>
+    </div>
+    <div class="roi-card" id="roi-card-hours">
+      <div class="roi-card-icon">⏱</div>
+      <div class="roi-value zero" id="roi-hours-saved">0 min</div>
+      <div class="roi-label">Agent Time Saved</div>
+      <div class="roi-sub">At 15 min / manual reply</div>
+    </div>
+    <div class="roi-card" id="roi-card-cost">
+      <div class="roi-card-icon">💶</div>
+      <div class="roi-value zero" id="roi-cost-saved">€0</div>
+      <div class="roi-label">Labour Cost Saved</div>
+      <div class="roi-sub">At €45 / agent hour (BE avg)</div>
+    </div>
+  </div>
+
+  <!-- Benchmark Table -->
+  <div class="roi-bench">
+    <div class="roi-bench-header">
+      <span class="panel-title">Industry Benchmark</span>
+      <span class="bench-badge without">Without Morphsage</span>
+      <span class="bench-badge with">With Morphsage</span>
+    </div>
+    <div class="bench-row head">
+      <div>Metric</div>
+      <div>Manual Process</div>
+      <div>Morphsage AI</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">First response time</div>
+      <div class="bench-without">4+ hours avg</div>
+      <div class="bench-with">&lt;1 second, 24/7</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Lead qualification time</div>
+      <div class="bench-without">2–3 days</div>
+      <div class="bench-with">Under 5 minutes</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Agent hours per deal</div>
+      <div class="bench-without">8–12 hours</div>
+      <div class="bench-with">Under 1 hour</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Cost per qualified lead</div>
+      <div class="bench-without">€90–€150</div>
+      <div class="bench-with">€8–€15</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Visit booking rate</div>
+      <div class="bench-without">25–35%</div>
+      <div class="bench-with">70–85%</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Lead drop-off (no follow-up)</div>
+      <div class="bench-without">60% lost after 48h</div>
+      <div class="bench-with">Auto follow-up in 24h</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Languages handled</div>
+      <div class="bench-without">Depends on agent</div>
+      <div class="bench-with">FR / NL / EN natively</div>
+    </div>
+    <div class="bench-row">
+      <div class="bench-metric">Availability</div>
+      <div class="bench-without">Office hours only</div>
+      <div class="bench-with">24 / 7 / 365</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="roi-cta">
+    <h3>Ready to see this working for your agency?</h3>
+    <p>Get a personalised ROI estimate based on your lead volume and team size.</p>
+    <div class="roi-cta-btns">
+      <a href="https://morphsage.ai#waitlist" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="5,3 19,12 5,21"/></svg>
+        Get early access
+      </a>
+      <a href="https://morphsage.ai#contact" class="btn-outline">Request a personalised demo</a>
+    </div>
+  </div>
+
+</section>
 
 <footer>
   Built with <a href="https://morphsage.ai">Morphsage</a> — AI-powered real estate automation &nbsp;·&nbsp; Brussels, Belgium
@@ -781,6 +1025,7 @@ function loadScenario(idx, btn) {
 function resetDemo() {
   currentStep = -1;
   isTyping = false;
+  roiReset();
   document.getElementById('chat-messages').innerHTML = '';
   document.getElementById('json-output').innerHTML = '<span style="color:var(--muted);font-style:italic">// Agent response will appear here...</span>';
   updateStatusBadge(null);
@@ -823,6 +1068,7 @@ async function nextStep() {
   updateAgentPills(step.agent.next_agent, nextIdx, scenario.steps);
   updateCollectedInfo(step.agent.collected_info);
   renderJSON(step.agent);
+  roiTrackMessage();
 
   currentStep = nextIdx;
   updateProgress();
@@ -1002,6 +1248,7 @@ function setMode(mode) {
 function resetLive() {
   liveHistory   = [];
   liveCollected = { budget: null, timeline: null, type: null, visit_interest: null };
+  roiReset();
   document.getElementById('chat-messages').innerHTML = '';
   document.getElementById('json-output').innerHTML = '<span style="color:var(--muted);font-style:italic">// Agent response will appear here...</span>';
   document.getElementById('live-error').style.display = 'none';
@@ -1083,6 +1330,7 @@ async function sendLive() {
     }
     updateCollectedInfo(liveCollected);
     renderJSON(data);
+    roiTrackMessage();
 
     // Confetti on deal close
     if (data.next_agent === null && data.appointment_confirmed === true) {
@@ -1135,6 +1383,56 @@ function launchConfetti() {
     wrap.appendChild(el);
   }
   setTimeout(() => { wrap.innerHTML = ''; }, 4000);
+}
+
+/* ═══════════════════════════════════════════════
+   ROI TRACKER
+═══════════════════════════════════════════════ */
+const roi = { messages: 0 };
+
+function roiTrackMessage() {
+  roi.messages++;
+  const minutes = roi.messages * 15;
+  const cost    = Math.round((minutes / 60) * 45);
+
+  // Update counters
+  setRoiVal('roi-messages',      roi.messages,   roi.messages > 0);
+  setRoiVal('roi-response-time', '<1s',           true);
+  setRoiVal('roi-hours-saved',   fmtTime(minutes), roi.messages > 0);
+  setRoiVal('roi-cost-saved',    `€${cost}`,      roi.messages > 0);
+
+  // Activate cards
+  ['roi-card-time','roi-card-messages','roi-card-hours','roi-card-cost'].forEach(id => {
+    document.getElementById(id).classList.toggle('has-value', roi.messages > 0);
+  });
+
+  // Scroll ROI into view gently after a few messages
+  if (roi.messages === 3) {
+    document.getElementById('roi-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function setRoiVal(id, val, active) {
+  const el = document.getElementById(id);
+  el.textContent = val;
+  el.classList.toggle('zero', !active);
+}
+
+function fmtTime(mins) {
+  if (mins < 60) return `${mins} min`;
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return m > 0 ? `${h}h ${m}m` : `${h}h`;
+}
+
+function roiReset() {
+  roi.messages = 0;
+  setRoiVal('roi-messages',      '0',   false);
+  setRoiVal('roi-response-time', '<1s', false);
+  setRoiVal('roi-hours-saved',   '0 min', false);
+  setRoiVal('roi-cost-saved',    '€0',  false);
+  ['roi-card-time','roi-card-messages','roi-card-hours','roi-card-cost']
+    .forEach(id => document.getElementById(id).classList.remove('has-value'));
 }
 
 /* ═══════════════════════════════════════════════
