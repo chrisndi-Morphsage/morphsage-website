@@ -271,6 +271,7 @@
     <li><a href="#niches" data-i18n="nav.industries">Industries</a></li>
     <li><a href="#features" data-i18n="nav.features">Features</a></li>
     <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
+    <li><a href="/demo" style="color:#00C9B1;font-weight:600;">Demo</a></li>
     <li><a href="#waitlist" data-i18n="nav.waitlist">Waitlist</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
@@ -351,6 +352,10 @@
         <h3 class="niche-title" data-i18n="niches.re.title">Real Estate</h3>
         <p class="niche-desc" data-i18n="niches.re.desc">Automate lead follow-ups, appointment scheduling, email responses, and property alerts.</p>
         <span class="niche-tag" data-i18n="niches.available">Available Now</span>
+        <a href="/demo" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.82rem;font-weight:600;color:#00C9B1;text-decoration:none;letter-spacing:0.03em;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+          Try Live Demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
       <div class="niche-card">
         <div class="niche-icon">
@@ -484,7 +489,7 @@
     <p data-i18n="cta.sub">Start automating smarter. Join hundreds of businesses already on the waitlist.</p>
     <div class="cta-btns">
       <button class="btn-primary" onclick="scrollToWaitlist()" data-i18n="cta.btn1">Request Early Access</button>
-      <button class="btn-ghost" onclick="scrollToWaitlist()" data-i18n="cta.btn2">Schedule a Demo</button>
+      <button class="btn-ghost" onclick="window.location.href='/demo'" data-i18n="cta.btn2">Schedule a Demo</button>
     </div>
   </div>
 </section>
