@@ -236,7 +236,6 @@
   <a href="#niches" onclick="closeMenu()" data-i18n="nav.industries">Industries</a>
   <a href="#features" onclick="closeMenu()" data-i18n="nav.features">Features</a>
   <a href="#how" onclick="closeMenu()" data-i18n="nav.how">How It Works</a>
-  <a href="#partners" onclick="closeMenu()" data-i18n="nav.partners">Partners</a>
   <a href="#waitlist" onclick="closeMenu()" data-i18n="nav.waitlist">Waitlist</a>
   <button class="mob-cta" onclick="closeMenu();scrollToWaitlist()" data-i18n="nav.cta">Request Access</button>
   <div class="mobile-lang">
@@ -272,7 +271,6 @@
     <li><a href="#niches" data-i18n="nav.industries">Industries</a></li>
     <li><a href="#features" data-i18n="nav.features">Features</a></li>
     <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
-    <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
     <li><a href="/demo" style="color:#00C9B1;font-weight:600;">Demo</a></li>
     <li><a href="#waitlist" data-i18n="nav.waitlist">Waitlist</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -290,10 +288,10 @@
 
 <section class="hero">
   <div class="hero-eyebrow" data-i18n="hero.eyebrow">Intelligent Automation Platform</div>
-  <h1 data-i18n-html="hero.title">Stop losing hours<br/>to work that<br/><em>AI should handle</em></h1>
-  <p class="hero-sub" data-i18n="hero.sub">Morphsage reads your inbox, drafts replies in your voice, books appointments, and routes every email intelligently — so you can focus on what actually moves your business forward.</p>
+  <h1 data-i18n-html="hero.title">Transform your<br/>workflows with<br/><em>sage intelligence</em></h1>
+  <p class="hero-sub" data-i18n="hero.sub">Morphsage handles the repetitive so you can focus on what truly matters — your time, your productivity and your business.</p>
   <div class="hero-actions">
-    <button class="btn-primary" onclick="window.location.href='https://app.morphsage.ai'" data-i18n="hero.cta1">Get Early Access</button>
+    <button class="btn-primary" onclick="scrollToWaitlist()" data-i18n="hero.cta1">Join the Waitlist</button>
     <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta2">See How It Works</button>
   </div>
   <div class="hero-orb"></div>
@@ -308,7 +306,6 @@
       <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label" data-i18n="stats.3">Accuracy rate</div></div>
       <div class="stat-item"><div class="stat-num">10×</div><div class="stat-label" data-i18n="stats.4">Faster workflows</div></div>
     </div>
-    <p style="text-align:center;font-size:.68rem;color:rgba(244,244,246,.2);margin-top:1.5rem;letter-spacing:.06em;" data-i18n="stats.footnote">* Based on early adopter feedback during beta testing. Results may vary.</p>
   </div>
 </section>
 
@@ -452,107 +449,11 @@
   </div>
 </section>
 
-<!-- PRODUCT PREVIEW -->
-<section style="background:rgba(28,28,46,.5);border-top:1px solid rgba(0,201,177,.07);border-bottom:1px solid rgba(0,201,177,.07);" id="product">
-  <div class="section-inner" style="text-align:center;">
-    <p class="section-label" data-i18n="product.label">Product</p>
-    <h2 class="section-title" data-i18n-html="product.title">See <em>Morphsage</em> in action</h2>
-    <p class="section-sub" style="margin:0 auto 3rem;" data-i18n="product.sub">Real Estate is live today — the rest is on its way.</p>
-    <div style="max-width:860px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(0,201,177,.2);box-shadow:0 32px 80px rgba(0,0,0,.5);">
-      <div style="background:rgba(14,14,26,1);padding:11px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);">
-        <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;flex-shrink:0;"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;flex-shrink:0;"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#28c840;flex-shrink:0;"></div>
-        <div style="flex:1;background:rgba(255,255,255,.06);border-radius:4px;padding:4px 12px;margin:0 12px;font-size:11px;color:rgba(255,255,255,.3);font-family:monospace;text-align:left;">app.morphsage.ai</div>
-      </div>
-      <div style="background:#1C1C2E;display:grid;grid-template-columns:190px 1fr;min-height:360px;">
-        <div style="background:rgba(12,12,24,1);border-right:1px solid rgba(255,255,255,.06);padding:18px 0;">
-          <div style="padding:0 14px 18px;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,.8);">Morph<span style="color:#00C9B1">sage</span></div>
-          <div style="padding:8px 14px;font-size:11px;color:#00C9B1;background:rgba(0,201,177,.08);border-left:2px solid #00C9B1;margin-bottom:2px;">📥 Inbox</div>
-          <div style="padding:8px 14px;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:2px;">📅 Calendar</div>
-          <div style="padding:8px 14px;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:2px;">✍️ Drafts</div>
-          <div style="padding:8px 14px;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:2px;">📊 Analytics</div>
-          <div style="padding:8px 14px;font-size:11px;color:rgba(255,255,255,.35);">⚙️ Settings</div>
-        </div>
-        <div style="padding:18px 22px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-            <div style="font-size:13px;color:rgba(255,255,255,.7);font-weight:500;" data-i18n="product.ui.inbox">Today's Inbox — 12 emails</div>
-            <div style="font-size:10px;background:rgba(0,201,177,.1);color:#00C9B1;border:1px solid rgba(0,201,177,.3);padding:3px 8px;border-radius:3px;" data-i18n="product.ui.drafts">3 drafts ready</div>
-          </div>
-          <div style="border:1px solid rgba(255,255,255,.06);border-radius:6px;overflow:hidden;">
-            <div style="padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:10px;background:rgba(0,201,177,.04);">
-              <div style="width:6px;height:6px;border-radius:50%;background:#00C9B1;flex-shrink:0;"></div>
-              <div style="flex:1;text-align:left;">
-                <div style="font-size:11px;color:rgba(255,255,255,.8);margin-bottom:2px;">Marie Dubois — Viewing Request: Rue de la Paix 12</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.3);" data-i18n="product.ui.row1sub">Lead Inquiry · Draft ready · 2 min ago</div>
-              </div>
-              <div style="font-size:10px;background:rgba(0,201,177,.12);color:#00C9B1;padding:2px 6px;border-radius:2px;white-space:nowrap;" data-i18n="product.ui.drafted">✓ Drafted</div>
-            </div>
-            <div style="padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:10px;">
-              <div style="width:6px;height:6px;border-radius:50%;background:#F5A623;flex-shrink:0;"></div>
-              <div style="flex:1;text-align:left;">
-                <div style="font-size:11px;color:rgba(255,255,255,.8);margin-bottom:2px;">Jan van Berg — Offer: €385,000 on Antwerpsesteenweg</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.3);" data-i18n="product.ui.row2sub">Offer &amp; Negotiation · Action required · 15 min ago</div>
-              </div>
-              <div style="font-size:10px;background:rgba(245,166,35,.12);color:#F5A623;padding:2px 6px;border-radius:2px;white-space:nowrap;" data-i18n="product.ui.review">! Review</div>
-            </div>
-            <div style="padding:10px 14px;display:flex;align-items:center;gap:10px;">
-              <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0;"></div>
-              <div style="flex:1;text-align:left;">
-                <div style="font-size:11px;color:rgba(255,255,255,.35);margin-bottom:2px;">Immo Newsletter — Weekly property digest</div>
-                <div style="font-size:10px;color:rgba(255,255,255,.2);" data-i18n="product.ui.row3sub">Ignored · Auto-filtered · 1 hr ago</div>
-              </div>
-              <div style="font-size:10px;color:rgba(255,255,255,.2);padding:2px 6px;" data-i18n="product.ui.filtered">Filtered</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;margin-top:14px;">
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:10px 14px;flex:1;text-align:center;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#00C9B1;">3.2h</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;" data-i18n="product.ui.saved">Saved today</div>
-            </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:10px 14px;flex:1;text-align:center;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#F5A623;">9/12</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;" data-i18n="product.ui.handled">Auto-handled</div>
-            </div>
-            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:10px 14px;flex:1;text-align:center;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#00C9B1;">2</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;" data-i18n="product.ui.booked">Appts booked</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="margin-top:16px;font-size:.68rem;color:rgba(244,244,246,.2);letter-spacing:.08em;" data-i18n="product.caption">Real Estate dashboard · Live on app.morphsage.ai</p>
-    <a href="https://app.morphsage.ai" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.84rem;font-weight:500;color:#00C9B1;text-decoration:none;letter-spacing:.04em;border:1px solid rgba(0,201,177,.3);padding:9px 22px;border-radius:3px;transition:background .2s;" onmouseover="this.style.background='rgba(0,201,177,.08)'" onmouseout="this.style.background=''" data-i18n="product.demo_btn">Try the live demo →</a>
-  </div>
-</section>
-
-<!-- PARTNERS -->
-<section id="partners" style="border-top:1px solid rgba(0,201,177,.07);">
-  <div class="section-inner" style="text-align:center;">
-    <p class="section-label" data-i18n="partners.label">Ecosystem</p>
-    <h2 class="section-title" data-i18n-html="partners.title">Works with the tools<br/><em>you already use</em></h2>
-    <p class="section-sub" style="margin:0 auto 3rem;" data-i18n="partners.sub">Morphsage connects to your existing stack — and we're always building new integrations.</p>
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:3.5rem;">
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Gmail</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Google Calendar</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Outlook</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Calendly</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Zapier</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">HubSpot</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Salesforce</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Slack</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">WhatsApp Business</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Notion</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.15);border-radius:4px;font-size:.78rem;color:rgba(244,244,246,.5);letter-spacing:.06em;">Microsoft 365</span>
-      <span style="padding:8px 18px;border:1px solid rgba(0,201,177,.12);border-radius:4px;font-size:.78rem;color:rgba(0,201,177,.4);letter-spacing:.06em;" data-i18n="partners.more">+ more coming</span>
-    </div>
-    <div style="background:rgba(45,27,105,.2);border:1px solid rgba(0,201,177,.15);border-radius:10px;padding:3rem 2.5rem;max-width:620px;margin:0 auto;">
-      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;" data-i18n="partners.cta_label">Partner with us</p>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.2;margin-bottom:.75rem;" data-i18n-html="partners.cta_title">Want to grow with <em>Morphsage</em>?</h3>
-      <p style="font-size:.88rem;color:rgba(244,244,246,.5);line-height:1.8;margin-bottom:1.75rem;" data-i18n="partners.cta_sub">We're actively looking for technology partners, resellers, and integration specialists across Europe. If you serve professional businesses and believe in intelligent automation, let's talk.</p>
-      <a href="#contact" style="display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--charcoal);padding:.85rem 2rem;border-radius:2px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" data-i18n="partners.cta_btn">Get in touch →</a>
-    </div>
+<section class="testimonial">
+  <div class="section-inner" style="padding-top:5rem;padding-bottom:5rem;text-align:center;">
+    <div class="quote-mark">"</div>
+    <p class="quote-text" data-i18n="testimonial.text">Morphsage didn't just automate our workflows — it transformed how our entire operations team thinks about scale.</p>
+    <p class="quote-author" data-i18n="testimonial.author">— Chief Operations Officer, Series B SaaS Company</p>
   </div>
 </section>
 
@@ -684,11 +585,9 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const i18n = {
   en: {
-    "nav.industries":"Industries","nav.features":"Features","nav.how":"How It Works","nav.partners":"Partners","nav.waitlist":"Waitlist","nav.contact":"Contact","nav.cta":"Request Access",
-    "hero.eyebrow":"Intelligent Automation Platform","hero.title":"Stop losing hours<br/>to work that<br/><em>AI should handle</em>","hero.sub":"Morphsage reads your inbox, drafts replies in your voice, books appointments, and routes every email intelligently — so you can focus on what actually moves your business forward.","hero.cta1":"Get Early Access","hero.cta2":"See How It Works","hero.scroll":"Scroll",
-    "stats.1":"Saved per week","stats.2":"Tool integrations","stats.3":"Accuracy rate","stats.4":"Faster workflows","stats.footnote":"* Based on early adopter feedback during beta testing. Results may vary.",
-    "product.label":"Product","product.title":"See <em>Morphsage</em> in action","product.sub":"Real Estate is live today — the rest is on its way.","product.caption":"Real Estate dashboard · Live on app.morphsage.ai","product.demo_btn":"Try the live demo →","product.ui.inbox":"Today's Inbox — 12 emails","product.ui.drafts":"3 drafts ready","product.ui.row1sub":"Lead Inquiry · Draft ready · 2 min ago","product.ui.drafted":"✓ Drafted","product.ui.row2sub":"Offer & Negotiation · Action required · 15 min ago","product.ui.review":"! Review","product.ui.row3sub":"Ignored · Auto-filtered · 1 hr ago","product.ui.filtered":"Filtered","product.ui.saved":"Saved today","product.ui.handled":"Auto-handled","product.ui.booked":"Appts booked",
-    "partners.label":"Ecosystem","partners.title":"Works with the tools<br/><em>you already use</em>","partners.sub":"Morphsage connects to your existing stack — and we're always building new integrations.","partners.more":"+ more coming","partners.cta_label":"Partner with us","partners.cta_title":"Want to grow with <em>Morphsage</em>?","partners.cta_sub":"We're actively looking for technology partners, resellers, and integration specialists across Europe. If you serve professional businesses and believe in intelligent automation, let's talk.","partners.cta_btn":"Get in touch →",
+    "nav.industries":"Industries","nav.features":"Features","nav.how":"How It Works","nav.waitlist":"Waitlist","nav.contact":"Contact","nav.cta":"Request Access",
+    "hero.eyebrow":"Intelligent Automation Platform","hero.title":"Transform your<br/>workflows with<br/><em>sage intelligence</em>","hero.sub":"Morphsage handles the repetitive so you can focus on what truly matters — your time, your productivity and your business.","hero.cta1":"Join the Waitlist","hero.cta2":"See How It Works","hero.scroll":"Scroll",
+    "stats.1":"Saved per week","stats.2":"Tool integrations","stats.3":"Accuracy rate","stats.4":"Faster workflows",
     "niches.label":"Industries","niches.title":"Built for every<br/><em>business that scales</em>","niches.sub":"Morphsage adapts to your industry. Start with your niche, grow into every corner of your business.","niches.badge":"LAUNCHING FIRST","niches.available":"Available Now","niches.soon":"Coming Soon",
     "niches.re.title":"Real Estate","niches.re.desc":"Automate lead follow-ups, appointment scheduling, email responses, and property alerts for agents and brokers.",
     "niches.legal.title":"Legal Firms","niches.legal.desc":"Streamline client intake, document management, deadline tracking, and billing workflows.",
@@ -734,11 +633,9 @@ const i18n = {
     "footer.privacy":"Privacy","footer.terms":"Terms","footer.security":"Security","footer.blog":"Blog","footer.contact":"info@morphsage.ai"
   },
   fr: {
-    "nav.industries":"Secteurs","nav.features":"Fonctionnalités","nav.how":"Comment ça marche","nav.partners":"Partenaires","nav.waitlist":"Liste d'attente","nav.contact":"Contact","nav.cta":"Demander l'accès",
-    "hero.eyebrow":"Plateforme d'automatisation intelligente","hero.title":"Arrêtez de perdre<br/>des heures sur des<br/><em>tâches répétitives</em>","hero.sub":"Morphsage lit votre boîte de réception, rédige des réponses dans votre voix, planifie des rendez-vous et achemine chaque e-mail intelligemment — pour que vous puissiez vous concentrer sur ce qui fait vraiment avancer votre entreprise.","hero.cta1":"Accès anticipé","hero.cta2":"Voir comment ça marche","hero.scroll":"Défiler",
-    "stats.1":"Économisées par semaine","stats.2":"Intégrations d'outils","stats.3":"Taux de précision","stats.4":"Flux de travail plus rapides","stats.footnote":"* Basé sur les retours des premiers utilisateurs en phase bêta. Les résultats peuvent varier.",
-    "product.label":"Produit","product.title":"Découvrez <em>Morphsage</em> en action","product.sub":"L'immobilier est disponible dès aujourd'hui — le reste arrive bientôt.","product.caption":"Tableau de bord Immobilier · Disponible sur app.morphsage.ai","product.demo_btn":"Essayer la démo →","product.ui.inbox":"Boîte de réception — 12 e-mails","product.ui.drafts":"3 brouillons prêts","product.ui.row1sub":"Demande de lead · Brouillon prêt · Il y a 2 min","product.ui.drafted":"✓ Rédigé","product.ui.row2sub":"Offre & Négociation · Action requise · Il y a 15 min","product.ui.review":"! Réviser","product.ui.row3sub":"Ignoré · Filtré automatiquement · Il y a 1h","product.ui.filtered":"Filtré","product.ui.saved":"Économisé aujourd'hui","product.ui.handled":"Géré automatiquement","product.ui.booked":"RDV réservés",
-    "partners.label":"Écosystème","partners.title":"Compatible avec les outils<br/><em>que vous utilisez déjà</em>","partners.sub":"Morphsage se connecte à votre pile existante — et nous construisons constamment de nouvelles intégrations.","partners.more":"+ d'autres à venir","partners.cta_label":"Partenariat","partners.cta_title":"Envie de grandir avec <em>Morphsage</em> ?","partners.cta_sub":"Nous recherchons activement des partenaires technologiques, revendeurs et spécialistes d'intégration en Europe. Si vous servez des professionnels et croyez en l'automatisation intelligente, parlons-en.","partners.cta_btn":"Nous contacter →",
+    "nav.industries":"Secteurs","nav.features":"Fonctionnalités","nav.how":"Comment ça marche","nav.waitlist":"Liste d'attente","nav.contact":"Contact","nav.cta":"Demander l'accès",
+    "hero.eyebrow":"Plateforme d'automatisation intelligente","hero.title":"Transformez vos<br/>processus avec<br/><em>l'intelligence sage</em>","hero.sub":"Morphsage gère les tâches répétitives pour que vous puissiez vous concentrer sur ce qui compte vraiment — votre temps, votre productivité et votre entreprise.","hero.cta1":"Rejoindre la liste d'attente","hero.cta2":"Voir comment ça marche","hero.scroll":"Défiler",
+    "stats.1":"Économisées par semaine","stats.2":"Intégrations d'outils","stats.3":"Taux de précision","stats.4":"Flux de travail plus rapides",
     "niches.label":"Secteurs","niches.title":"Conçu pour chaque<br/><em>entreprise qui grandit</em>","niches.sub":"Morphsage s'adapte à votre secteur. Démarrez avec votre niche, développez-vous dans chaque aspect de votre activité.","niches.badge":"LANCEMENT EN PREMIER","niches.available":"Disponible maintenant","niches.soon":"Bientôt disponible",
     "niches.re.title":"Immobilier","niches.re.desc":"Automatisez les suivis de prospects, la prise de rendez-vous, les réponses aux e-mails et les alertes immobilières pour les agents et courtiers.",
     "niches.legal.title":"Cabinets juridiques","niches.legal.desc":"Simplifiez l'accueil des clients, la gestion des documents, le suivi des délais et les flux de facturation.",
@@ -784,11 +681,9 @@ const i18n = {
     "footer.privacy":"Confidentialité","footer.terms":"Conditions","footer.security":"Sécurité","footer.blog":"Blog","footer.contact":"info@morphsage.ai"
   },
   nl: {
-    "nav.industries":"Sectoren","nav.features":"Functies","nav.how":"Hoe het werkt","nav.partners":"Partners","nav.waitlist":"Wachtlijst","nav.contact":"Contact","nav.cta":"Toegang aanvragen",
-    "hero.eyebrow":"Intelligent automatiseringsplatform","hero.title":"Stop tijd te verliezen<br/>aan werk dat<br/><em>AI moet afhandelen</em>","hero.sub":"Morphsage leest uw inbox, stelt antwoorden op in uw stem, boekt afspraken en verwerkt elke e-mail intelligent — zodat u zich kunt concentreren op wat uw bedrijf echt vooruit helpt.","hero.cta1":"Vroege toegang","hero.cta2":"Bekijk hoe het werkt","hero.scroll":"Scrollen",
-    "stats.1":"Bespaard per week","stats.2":"Tool-integraties","stats.3":"Nauwkeurigheidsgraad","stats.4":"Snellere workflows","stats.footnote":"* Gebaseerd op feedback van vroege gebruikers tijdens de bètatest. Resultaten kunnen variëren.",
-    "product.label":"Product","product.title":"Zie <em>Morphsage</em> in actie","product.sub":"Vastgoed is vandaag live — de rest komt eraan.","product.caption":"Vastgoed dashboard · Live op app.morphsage.ai","product.demo_btn":"Probeer de live demo →","product.ui.inbox":"Inbox vandaag — 12 e-mails","product.ui.drafts":"3 concepten klaar","product.ui.row1sub":"Lead aanvraag · Concept klaar · 2 min geleden","product.ui.drafted":"✓ Opgesteld","product.ui.row2sub":"Bod & Onderhandeling · Actie vereist · 15 min geleden","product.ui.review":"! Beoordelen","product.ui.row3sub":"Genegeerd · Automatisch gefilterd · 1 uur geleden","product.ui.filtered":"Gefilterd","product.ui.saved":"Vandaag bespaard","product.ui.handled":"Automatisch afgehandeld","product.ui.booked":"Afspraken geboekt",
-    "partners.label":"Ecosysteem","partners.title":"Werkt met de tools<br/><em>die u al gebruikt</em>","partners.sub":"Morphsage verbindt met uw bestaande stack — en we bouwen voortdurend nieuwe integraties.","partners.more":"+ meer komen","partners.cta_label":"Partner worden","partners.cta_title":"Wilt u groeien met <em>Morphsage</em>?","partners.cta_sub":"We zijn actief op zoek naar technologiepartners, resellers en integratie-specialisten in Europa. Als u professionals bedient en gelooft in intelligente automatisering, laten we dan praten.","partners.cta_btn":"Neem contact op →",
+    "nav.industries":"Sectoren","nav.features":"Functies","nav.how":"Hoe het werkt","nav.waitlist":"Wachtlijst","nav.contact":"Contact","nav.cta":"Toegang aanvragen",
+    "hero.eyebrow":"Intelligent automatiseringsplatform","hero.title":"Transformeer uw<br/>workflows met<br/><em>wijze intelligentie</em>","hero.sub":"Morphsage verwerkt het repetitieve zodat u zich kunt richten op wat echt telt — uw tijd, uw productiviteit en uw bedrijf.","hero.cta1":"Aanmelden voor wachtlijst","hero.cta2":"Bekijk hoe het werkt","hero.scroll":"Scrollen",
+    "stats.1":"Bespaard per week","stats.2":"Tool-integraties","stats.3":"Nauwkeurigheidsgraad","stats.4":"Snellere workflows",
     "niches.label":"Sectoren","niches.title":"Gebouwd voor elk<br/><em>bedrijf dat groeit</em>","niches.sub":"Morphsage past zich aan uw sector aan. Begin met uw niche en groei naar elk hoekje van uw bedrijf.","niches.badge":"ALS EERSTE GELANCEERD","niches.available":"Nu beschikbaar","niches.soon":"Binnenkort beschikbaar",
     "niches.re.title":"Vastgoed","niches.re.desc":"Automatiseer leadopvolging, afspraken plannen, e-mailreacties en vastgoedmeldingen voor makelaars en bemiddelaars.",
     "niches.legal.title":"Juridische kantoren","niches.legal.desc":"Stroomlijn klantontvangst, documentbeheer, deadlinetracking en factureringsworkflows.",
