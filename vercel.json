@@ -1,4 +1,18 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": false
-}
+{                                                                             
+    "cleanUrls": true,
+    "trailingSlash": false,                                                     
+    "rewrites": [                                                               
+      { "source": "/realestate", "destination":
+  "https://app.morphsage.ai/realestate" },                                      
+      { "source": "/beta", "destination": "https://app.morphsage.ai/beta" },    
+      { "source": "/api/:path*", "destination":                                 
+  "https://app.morphsage.ai/api/:path*" },
+      { "source": "/events", "destination": "https://app.morphsage.ai/events" },
+      { "source": "/scan", "destination": "https://app.morphsage.ai/scan" },    
+      { "source": "/scan-all", "destination":                                   
+  "https://app.morphsage.ai/scan-all" },
+      { "source": "/auth/:path*", "destination":                                
+  "https://app.morphsage.ai/auth/:path*" },                                     
+      { "source": "/sw.js", "destination": "https://app.morphsage.ai/sw.js" }
+    ]                                                                           
+  }           
