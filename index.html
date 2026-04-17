@@ -201,9 +201,9 @@
   <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
   <button class="mob-cta" onclick="closeMenu();scrollToWaitlist()" data-i18n="nav.cta">Request Access</button>
   <div class="mobile-lang">
-    <button class="lang-btn active" onclick="setLang('en');closeMenu()">🇬🇧 EN</button>
-    <button class="lang-btn" onclick="setLang('fr');closeMenu()">🇫🇷 FR</button>
-    <button class="lang-btn" onclick="setLang('nl');closeMenu()">🇳🇱 NL</button>
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en');closeMenu()">🇬🇧 EN</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr');closeMenu()">🇫🇷 FR</button>
+    <button class="lang-btn" data-lang="nl" onclick="setLang('nl');closeMenu()">🇳🇱 NL</button>
   </div>
 </div>
 
@@ -525,7 +525,7 @@ function updateBtns() {
     if(b) b.classList.toggle('active', l === currentLang);
   });
   document.querySelectorAll('.mobile-lang .lang-btn').forEach(b => {
-    const l = b.textContent.includes('EN') ? 'en' : b.textContent.includes('FR') ? 'fr' : 'nl';
+    const l = b.getAttribute('data-lang');
     b.classList.toggle('active', l === currentLang);
   });
 }
@@ -603,6 +603,8 @@ function submitContact(e) {
   const successEl = document.getElementById('cf-success');
   const errorEl = document.getElementById('cf-error');
   btn.disabled = true;
+  successEl.style.display = 'none';
+  errorEl.style.display = 'none';
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
     from_name: name,
     from_email: email,
