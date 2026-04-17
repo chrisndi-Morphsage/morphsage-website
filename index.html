@@ -99,6 +99,14 @@
   .trust-item svg { width:16px; height:16px; color:var(--teal); flex-shrink:0; }
   @media(max-width:680px) { .trust-strip-inner { gap:1.25rem; } .trust-item { font-size:.68rem; } }
 
+  /* STATS */
+  .stats { background:rgba(0,201,177,.04); border-top:1px solid rgba(0,201,177,.07); border-bottom:1px solid rgba(0,201,177,.07); }
+  .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
+  .stat-item { text-align:center; }
+  .stat-num { font-family:var(--fd); font-size:clamp(2.5rem,4vw,3.5rem); color:var(--teal); margin-bottom:.25rem; }
+  .stat-label { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(244,244,246,.4); }
+  @media(max-width:900px) { .stats-grid { grid-template-columns:repeat(2,1fr); } }
+
   /* VALUE PROPS */
   .value-props { border-top:1px solid rgba(0,201,177,.07); }
   .vp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; }
@@ -274,6 +282,18 @@
   </div>
 </section>
 
+<!-- STATS -->
+<section class="stats">
+  <div class="section-inner" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num">15h</div><div class="stat-label" data-i18n="stats.1">Saved per week</div></div>
+      <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label" data-i18n="stats.2">Tool integrations</div></div>
+      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label" data-i18n="stats.3">Accuracy rate</div></div>
+      <div class="stat-item"><div class="stat-num">10×</div><div class="stat-label" data-i18n="stats.4">Faster workflows</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- VALUE PROPS -->
 <section class="value-props">
   <div class="section-inner" style="padding-top:5rem;padding-bottom:5rem;">
@@ -402,6 +422,7 @@ const i18n = {
   en: {
     "nav.waitlist":"Waitlist","nav.contact":"Contact","nav.cta":"Request Access",
     "hero.eyebrow":"Intelligent Automation Platform","hero.title":"Transform your<br/>workflows with<br/><em>sage intelligence</em>","hero.sub":"Morphsage handles the repetitive so you can focus on what truly matters — your time, your productivity and your business.","hero.cta1":"Join the Waitlist","hero.cta2":"Get in Touch","hero.scroll":"Scroll",
+    "stats.1":"Saved per week","stats.2":"Tool integrations","stats.3":"Accuracy rate","stats.4":"Faster workflows",
     "vp.1.title":"Built for Europeans","vp.1.desc":"GDPR compliant by design. Your data stays in Europe. Available in English, French, and Dutch — built to meet the expectations of European professionals.",
     "vp.2.title":"Reclaim your time","vp.2.desc":"Email follow-ups, appointment scheduling, lead responses — handled automatically. Morphsage works in the background so you stay focused on what matters.",
     "vp.3.title":"Live for Real Estate","vp.3.desc":"Currently available for real estate agents and brokers. Legal, healthcare, finance, and more are launching soon — join the waitlist to be first in line.",
@@ -428,6 +449,7 @@ const i18n = {
   fr: {
     "nav.waitlist":"Liste d'attente","nav.contact":"Contact","nav.cta":"Demander l'accès",
     "hero.eyebrow":"Plateforme d'automatisation intelligente","hero.title":"Transformez vos<br/>processus avec<br/><em>l'intelligence sage</em>","hero.sub":"Morphsage gère les tâches répétitives pour que vous puissiez vous concentrer sur ce qui compte vraiment — votre temps, votre productivité et votre entreprise.","hero.cta1":"Rejoindre la liste d'attente","hero.cta2":"Nous contacter","hero.scroll":"Défiler",
+    "stats.1":"Économisées par semaine","stats.2":"Intégrations d'outils","stats.3":"Taux de précision","stats.4":"Flux de travail plus rapides",
     "vp.1.title":"Conçu pour les Européens","vp.1.desc":"Conforme au RGPD par conception. Vos données restent en Europe. Disponible en anglais, français et néerlandais — conçu pour les professionnels européens.",
     "vp.2.title":"Récupérez votre temps","vp.2.desc":"Relances par e-mail, prise de rendez-vous, réponses aux prospects — gérés automatiquement. Morphsage travaille en arrière-plan pour que vous restiez concentré.",
     "vp.3.title":"Disponible pour l'immobilier","vp.3.desc":"Actuellement disponible pour les agents et courtiers immobiliers. D'autres secteurs arrivent bientôt — rejoignez la liste pour être le premier.",
@@ -454,6 +476,7 @@ const i18n = {
   nl: {
     "nav.waitlist":"Wachtlijst","nav.contact":"Contact","nav.cta":"Toegang aanvragen",
     "hero.eyebrow":"Intelligent automatiseringsplatform","hero.title":"Transformeer uw<br/>workflows met<br/><em>wijze intelligentie</em>","hero.sub":"Morphsage verwerkt het repetitieve zodat u zich kunt richten op wat echt telt — uw tijd, uw productiviteit en uw bedrijf.","hero.cta1":"Aanmelden voor wachtlijst","hero.cta2":"Neem contact op","hero.scroll":"Scrollen",
+    "stats.1":"Bespaard per week","stats.2":"Tool-integraties","stats.3":"Nauwkeurigheidsgraad","stats.4":"Snellere workflows",
     "vp.1.title":"Gebouwd voor Europeanen","vp.1.desc":"GDPR-conform by design. Uw gegevens blijven in Europa. Beschikbaar in het Engels, Frans en Nederlands — gebouwd voor Europese professionals.",
     "vp.2.title":"Herwin uw tijd","vp.2.desc":"E-mail follow-ups, afspraken plannen, leadreacties — automatisch afgehandeld. Morphsage werkt op de achtergrond zodat u gefocust blijft.",
     "vp.3.title":"Live voor vastgoed","vp.3.desc":"Momenteel beschikbaar voor makelaars en vastgoedprofessionals. Meer sectoren volgen binnenkort — meld u aan om als eerste toegang te krijgen.",
