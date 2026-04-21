@@ -1578,7 +1578,7 @@ footer {
               <span class="author-name">Sophie M.</span> — Real Estate Agent, Brussels
             </div>
           </div>
-          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&h=600&fit=crop&crop=face" alt="Sophie M." loading="lazy"/></div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500&h=600&fit=crop&crop=face" alt="Sophie M." loading="lazy"/></div>
         </div>
 
         <!-- Slide 2 (hidden) -->
@@ -1593,7 +1593,7 @@ footer {
               <span class="author-name">David K.</span> — Independent Consultant, Amsterdam
             </div>
           </div>
-          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=600&fit=crop&crop=face" alt="David K." loading="lazy"/></div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&h=600&fit=crop&crop=face" alt="David K." loading="lazy"/></div>
         </div>
 
         <!-- Slide 3 (hidden) -->
@@ -1611,6 +1611,51 @@ footer {
           <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop&crop=face" alt="Claire B." loading="lazy"/></div>
         </div>
 
+        <!-- Slide 4 (hidden) -->
+        <div class="testimonial-card" id="slide-3" style="display:none;">
+          <div class="testimonial-content">
+            <span class="company-badge">Marketing · London</span>
+            <p class="quote-text">"I was skeptical at first — I'm 22 and thought I could manage my own inbox. Morphsage proved me wrong in the best way. My response time dropped from hours to minutes."</p>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <div class="testimonial-author">
+              <span class="author-name">Amara J.</span> — Marketing Coordinator, London
+            </div>
+          </div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=500&h=600&fit=crop&crop=face" alt="Amara J." loading="lazy"/></div>
+        </div>
+
+        <!-- Slide 5 (hidden) -->
+        <div class="testimonial-card" id="slide-4" style="display:none;">
+          <div class="testimonial-content">
+            <span class="company-badge">Real Estate · Lyon</span>
+            <p class="quote-text">"At my stage of career, time is everything. Morphsage gives me back hours every week. My clients notice the difference — replies arrive before they even check their phone."</p>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <div class="testimonial-author">
+              <span class="author-name">Henri V.</span> — Senior Broker, Lyon
+            </div>
+          </div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1553867745-6e038d085e86?w=500&h=600&fit=crop&crop=face" alt="Henri V." loading="lazy"/></div>
+        </div>
+
+        <!-- Slide 6 (hidden) -->
+        <div class="testimonial-card" id="slide-5" style="display:none;">
+          <div class="testimonial-content">
+            <span class="company-badge">Finance · Singapore</span>
+            <p class="quote-text">"The precision is remarkable. Every client email classified correctly, every follow-up timed perfectly. It's the assistant I always needed but could never find."</p>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <div class="testimonial-author">
+              <span class="author-name">James L.</span> — Financial Advisor, Singapore
+            </div>
+          </div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&h=600&fit=crop&crop=face" alt="James L." loading="lazy"/></div>
+        </div>
+
       </div>
 
       <div class="carousel-nav">
@@ -1621,6 +1666,9 @@ footer {
           <div class="dot active" data-idx="0"></div>
           <div class="dot" data-idx="1"></div>
           <div class="dot" data-idx="2"></div>
+          <div class="dot" data-idx="3"></div>
+          <div class="dot" data-idx="4"></div>
+          <div class="dot" data-idx="5"></div>
         </div>
         <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1890,7 +1938,7 @@ function closeMobile() {
 
 /* ── Carousel ── */
 let currentSlide = 0;
-const totalSlides = 3;
+const totalSlides = 6;
 
 function showSlide(idx) {
   for (let i = 0; i < totalSlides; i++) {
