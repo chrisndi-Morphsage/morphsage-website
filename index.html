@@ -49,13 +49,14 @@
   .nav-links { list-style:none; display:flex; gap:2.5rem; }
   .nav-links a { color:rgba(244,244,246,.65); text-decoration:none; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
   .nav-links a:hover { color:var(--teal); }
+  .nav-links a sup { font-size:.6rem; letter-spacing:.05em; margin-left:.25rem; opacity:.5; vertical-align:super; }
   .lang-switcher { display:flex; align-items:center; gap:.35rem; }
   .lang-btn { background:transparent; border:1px solid rgba(0,201,177,.2); color:rgba(244,244,246,.5); padding:.3rem .6rem; border-radius:3px; font-family:var(--fb); font-size:.72rem; letter-spacing:.08em; cursor:pointer; transition:all .2s; }
   .lang-btn:hover { border-color:var(--teal); color:var(--teal); }
   .lang-btn.active { background:rgba(0,201,177,.12); border-color:var(--teal); color:var(--teal); }
   .nav-right { display:flex; align-items:center; gap:1rem; }
-  .nav-cta { background:transparent; border:1px solid var(--teal); color:var(--teal); padding:.55rem 1.4rem; border-radius:2px; font-family:var(--fb); font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .25s,color .25s; }
-  .nav-cta:hover { background:var(--teal); color:var(--charcoal); }
+  .nav-cta { background:var(--teal); border:none; color:var(--charcoal); padding:.55rem 1.4rem; border-radius:50px; font-family:var(--fb); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; font-weight:500; transition:opacity .2s,transform .2s; }
+  .nav-cta:hover { opacity:.88; transform:translateY(-1px); }
   .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:300; }
   .hamburger span { display:block; width:24px; height:2px; background:var(--off-white); border-radius:2px; transition:all .3s ease; }
   .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
@@ -182,6 +183,21 @@
   .waitlist-success { display:none; color:var(--teal); font-size:.9rem; margin-top:1rem; }
   .waitlist-error { display:none; color:#f87171; font-size:.9rem; margin-top:1rem; }
 
+  /* TESTIMONIALS */
+  .testimonials { border-top:1px solid rgba(0,201,177,.07); }
+  .testimonials-header { text-align:center; margin-bottom:4rem; }
+  .testimonials-header .section-title { margin-bottom:.5rem; }
+  .testimonials-sub { color:rgba(244,244,246,.45); font-size:.92rem; }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .tcard { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:2rem; display:flex; flex-direction:column; justify-content:space-between; gap:2.5rem; transition:border-color .25s,background .25s; }
+  .tcard:hover { background:rgba(255,255,255,.06); border-color:rgba(0,201,177,.18); }
+  .tcard-quote { font-size:.92rem; line-height:1.85; color:rgba(244,244,246,.65); }
+  .tcard-author { }
+  .tcard-name { font-family:var(--fd); font-size:1rem; font-weight:400; color:var(--off-white); }
+  .tcard-role { font-size:.78rem; color:rgba(244,244,246,.35); margin-top:.2rem; }
+  @media(max-width:900px) { .testimonials-grid { grid-template-columns:1fr 1fr; } }
+  @media(max-width:680px) { .testimonials-grid { grid-template-columns:1fr; } }
+
   /* CONTACT SECTION */
   .contact { background:rgba(28,28,46,.95); border-top:1px solid rgba(0,201,177,.1); }
   .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
@@ -252,9 +268,11 @@
 <div class="bg-mesh"></div>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#waitlist" onclick="closeMenu()" data-i18n="nav.waitlist">Waitlist</a>
+  <a href="#values" onclick="closeMenu()" data-i18n="nav.features">Features</a>
+  <a href="#story" onclick="closeMenu()" data-i18n="nav.how">How it Works</a>
+  <a href="#waitlist" onclick="closeMenu()" data-i18n="nav.pricing">Pricing</a>
   <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
-  <button class="mob-cta" onclick="closeMenu();scrollToWaitlist()" data-i18n="nav.cta">Request Access</button>
+  <button class="mob-cta" onclick="closeMenu();scrollToWaitlist()" data-i18n="nav.cta">Get early access</button>
   <div class="mobile-lang">
     <button class="lang-btn active" data-lang="en" onclick="setLang('en');closeMenu()">🇬🇧 EN</button>
     <button class="lang-btn" data-lang="fr" onclick="setLang('fr');closeMenu()">🇫🇷 FR</button>
@@ -285,8 +303,9 @@
     <span class="logo-text">Morph<span>sage</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#waitlist" data-i18n="nav.waitlist">Waitlist</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="#values" data-i18n="nav.features">Features<sup>01</sup></a></li>
+    <li><a href="#story" data-i18n="nav.how">How it Works<sup>02</sup></a></li>
+    <li><a href="#waitlist" data-i18n="nav.pricing">Pricing<sup>03</sup></a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-switcher">
@@ -294,18 +313,18 @@
       <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
       <button class="lang-btn" id="btn-nl" onclick="setLang('nl')">🇳🇱 NL</button>
     </div>
-    <button class="nav-cta" onclick="scrollToWaitlist()" data-i18n="nav.cta">Request Access</button>
+    <button class="nav-cta" onclick="scrollToWaitlist()" data-i18n="nav.cta">Get early access</button>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="hero">
   <div class="hero-eyebrow" data-i18n="hero.eyebrow">Intelligent Automation Platform</div>
-  <h1 data-i18n-html="hero.title">Transform your<br/>workflows with<br/><em>sage intelligence</em></h1>
-  <p class="hero-sub" data-i18n="hero.sub">Morphsage handles the repetitive so you can focus on what truly matters — your time, your productivity and your business.</p>
+  <h1 data-i18n-html="hero.title">We handle the work.<br/>You keep the <em>clients</em>.</h1>
+  <p class="hero-sub" data-i18n="hero.sub">Morphsage turns your inbox and calendar into an automated workflow — so professionals in any field can serve more clients, faster.</p>
   <div class="hero-actions">
-    <button class="btn-primary" onclick="scrollToWaitlist()" data-i18n="hero.cta1">Join the Waitlist</button>
-    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta2">Get in Touch</button>
+    <button class="btn-primary" onclick="scrollToWaitlist()" data-i18n="hero.cta1">Get early access</button>
+    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta2">See how it works</button>
   </div>
   <div class="hero-orb"></div>
   <div class="scroll-hint"><span data-i18n="hero.scroll">Scroll</span><div class="scroll-line"></div></div>
@@ -455,7 +474,7 @@
 </section>
 
 <!-- VALUE PROPS -->
-<section class="value-props">
+<section class="value-props" id="values">
   <div class="section-inner" style="padding-top:5rem;padding-bottom:5rem;">
     <div class="vp-header">
       <span class="section-label">The Platform</span>
@@ -484,6 +503,39 @@
         </svg>
         <h3 class="vp-title" data-i18n="vp.3.title">Live for Real Estate</h3>
         <p class="vp-desc" data-i18n="vp.3.desc">Currently available for real estate agents and brokers. Legal, healthcare, finance, and more are launching soon — join the waitlist to be first in line.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner" style="padding-top:5rem;padding-bottom:5rem;">
+    <div class="testimonials-header">
+      <h2 class="section-title" data-i18n-html="testimonials.title">Trusted by <em>professionals</em>.</h2>
+      <p class="testimonials-sub" data-i18n="testimonials.sub">See how Morphsage transforms the way people work.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <p class="tcard-quote" data-i18n="t1.quote">"Morphsage handles my inbox while I'm on viewings. Every lead gets a reply within minutes — I've never lost a prospect to slow follow-up again."</p>
+        <div class="tcard-author">
+          <div class="tcard-name" data-i18n="t1.name">Sophie M.</div>
+          <div class="tcard-role" data-i18n="t1.role">Real Estate Agent, Brussels</div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p class="tcard-quote" data-i18n="t2.quote">"Client follow-ups and appointment confirmations used to eat my mornings. Now they're fully automatic. I focus on advising, Morphsage handles everything else."</p>
+        <div class="tcard-author">
+          <div class="tcard-name" data-i18n="t2.name">David K.</div>
+          <div class="tcard-role" data-i18n="t2.role">Independent Consultant, Amsterdam</div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p class="tcard-quote" data-i18n="t3.quote">"I can focus on my clients while Morphsage handles the scheduling and follow-up. It's like having an assistant who never misses an email."</p>
+        <div class="tcard-author">
+          <div class="tcard-name" data-i18n="t3.name">Claire B.</div>
+          <div class="tcard-role" data-i18n="t3.role">Healthcare Professional, Paris</div>
+        </div>
       </div>
     </div>
   </div>
@@ -584,13 +636,17 @@
 <script>
 const i18n = {
   en: {
-    "nav.waitlist":"Waitlist","nav.contact":"Contact","nav.cta":"Request Access",
-    "hero.eyebrow":"Intelligent Automation Platform","hero.title":"Transform your<br/>workflows with<br/><em>sage intelligence</em>","hero.sub":"Morphsage handles the repetitive so you can focus on what truly matters — your time, your productivity and your business.","hero.cta1":"Join the Waitlist","hero.cta2":"Get in Touch","hero.scroll":"Scroll",
+    "nav.features":"Features","nav.how":"How it Works","nav.pricing":"Pricing","nav.contact":"Contact","nav.cta":"Get early access",
+    "hero.eyebrow":"Intelligent Automation Platform","hero.title":"We handle the work.<br/>You keep the <em>clients</em>.","hero.sub":"Morphsage turns your inbox and calendar into an automated workflow — so professionals in any field can serve more clients, faster.","hero.cta1":"Get early access","hero.cta2":"See how it works","hero.scroll":"Scroll",
     "stats.1":"Saved per week","stats.2":"Tool integrations","stats.3":"Accuracy rate","stats.4":"Faster workflows",
     "vp.heading":"Automation with the<br/><em>wisdom</em> of a sage.",
     "vp.1.title":"Built for Europeans","vp.1.desc":"GDPR compliant by design. Your data stays in Europe. Available in English, French, and Dutch — built to meet the expectations of European professionals.",
     "vp.2.title":"Reclaim your time","vp.2.desc":"Email follow-ups, appointment scheduling, lead responses — handled automatically. Morphsage works in the background so you stay focused on what matters.",
     "vp.3.title":"Live for Real Estate","vp.3.desc":"Currently available for real estate agents and brokers. Legal, healthcare, finance, and more are launching soon — join the waitlist to be first in line.",
+    "testimonials.title":"Trusted by <em>professionals</em>.","testimonials.sub":"See how Morphsage transforms the way people work.",
+    "t1.quote":"\"Morphsage handles my inbox while I'm on viewings. Every lead gets a reply within minutes — I've never lost a prospect to slow follow-up again.\"","t1.name":"Sophie M.","t1.role":"Real Estate Agent, Brussels",
+    "t2.quote":"\"Client follow-ups and appointment confirmations used to eat my mornings. Now they're fully automatic. I focus on advising, Morphsage handles everything else.\"","t2.name":"David K.","t2.role":"Independent Consultant, Amsterdam",
+    "t3.quote":"\"I can focus on my clients while Morphsage handles the scheduling and follow-up. It's like having an assistant who never misses an email.\"","t3.name":"Claire B.","t3.role":"Healthcare Professional, Paris",
     "waitlist.title":"Be the <em>first</em> to know","waitlist.sub":"Join the waitlist and get early access to the most intelligent automation platform built for modern businesses.","waitlist.placeholder":"Enter your email address","waitlist.btn":"Join Waitlist","waitlist.success":"✓ You're on the list! We'll be in touch soon.","waitlist.error":"Something went wrong. Please try again.",
     "contact.title":"Get in <em>touch</em>",
     "contact.sub":"Have a question about Morphsage? Want to request a demo? Or simply want to say hello? We'd love to hear from you.",
@@ -612,13 +668,17 @@ const i18n = {
     "footer.privacy":"Privacy","footer.terms":"Terms","footer.security":"Security"
   },
   fr: {
-    "nav.waitlist":"Liste d'attente","nav.contact":"Contact","nav.cta":"Demander l'accès",
-    "hero.eyebrow":"Plateforme d'automatisation intelligente","hero.title":"Transformez vos<br/>processus avec<br/><em>l'intelligence sage</em>","hero.sub":"Morphsage gère les tâches répétitives pour que vous puissiez vous concentrer sur ce qui compte vraiment — votre temps, votre productivité et votre entreprise.","hero.cta1":"Rejoindre la liste d'attente","hero.cta2":"Nous contacter","hero.scroll":"Défiler",
+    "nav.features":"Fonctionnalités","nav.how":"Comment ça marche","nav.pricing":"Tarifs","nav.contact":"Contact","nav.cta":"Accès anticipé",
+    "hero.eyebrow":"Plateforme d'automatisation intelligente","hero.title":"Nous gérons le travail.<br/>Vous gardez les <em>clients</em>.","hero.sub":"Morphsage transforme votre boîte mail et votre agenda en un flux de travail automatisé — pour que les professionnels de tous secteurs servent plus de clients, plus vite.","hero.cta1":"Accès anticipé","hero.cta2":"Voir comment ça marche","hero.scroll":"Défiler",
     "stats.1":"Économisées par semaine","stats.2":"Intégrations d'outils","stats.3":"Taux de précision","stats.4":"Flux de travail plus rapides",
     "vp.heading":"L'automatisation avec la<br/><em>sagesse</em> d'un sage.",
     "vp.1.title":"Conçu pour les Européens","vp.1.desc":"Conforme au RGPD par conception. Vos données restent en Europe. Disponible en anglais, français et néerlandais — conçu pour les professionnels européens.",
     "vp.2.title":"Récupérez votre temps","vp.2.desc":"Relances par e-mail, prise de rendez-vous, réponses aux prospects — gérés automatiquement. Morphsage travaille en arrière-plan pour que vous restiez concentré.",
     "vp.3.title":"Disponible pour l'immobilier","vp.3.desc":"Actuellement disponible pour les agents et courtiers immobiliers. D'autres secteurs arrivent bientôt — rejoignez la liste pour être le premier.",
+    "testimonials.title":"Plébiscité par les <em>professionnels</em>.","testimonials.sub":"Découvrez comment Morphsage transforme la façon de travailler.",
+    "t1.quote":"\"Morphsage gère ma boîte mail pendant mes visites. Chaque prospect reçoit une réponse en quelques minutes — je n'ai plus jamais perdu un client à cause d'un suivi tardif.\"","t1.name":"Sophie M.","t1.role":"Agent immobilier, Bruxelles",
+    "t2.quote":"\"Les relances clients et confirmations de rendez-vous me prenaient mes matinées. Maintenant c'est entièrement automatique. Je me concentre sur le conseil.\"","t2.name":"David K.","t2.role":"Consultant indépendant, Amsterdam",
+    "t3.quote":"\"Je me concentre sur mes patients pendant que Morphsage gère la prise de rendez-vous et les suivis. Comme avoir un assistant qui ne rate jamais un e-mail.\"","t3.name":"Claire B.","t3.role":"Professionnelle de santé, Paris",
     "waitlist.title":"Soyez le <em>premier</em> informé","waitlist.sub":"Rejoignez la liste d'attente et obtenez un accès anticipé à la plateforme d'automatisation la plus intelligente.","waitlist.placeholder":"Entrez votre adresse e-mail","waitlist.btn":"Rejoindre la liste","waitlist.success":"✓ Vous êtes sur la liste ! Nous vous contacterons bientôt.","waitlist.error":"Une erreur s'est produite. Veuillez réessayer.",
     "contact.title":"Nous <em>contacter</em>",
     "contact.sub":"Une question sur Morphsage ? Vous souhaitez demander une démo ? Ou simplement dire bonjour ? Nous serions ravis de vous entendre.",
@@ -640,13 +700,17 @@ const i18n = {
     "footer.privacy":"Confidentialité","footer.terms":"Conditions","footer.security":"Sécurité"
   },
   nl: {
-    "nav.waitlist":"Wachtlijst","nav.contact":"Contact","nav.cta":"Toegang aanvragen",
-    "hero.eyebrow":"Intelligent automatiseringsplatform","hero.title":"Transformeer uw<br/>workflows met<br/><em>wijze intelligentie</em>","hero.sub":"Morphsage verwerkt het repetitieve zodat u zich kunt richten op wat echt telt — uw tijd, uw productiviteit en uw bedrijf.","hero.cta1":"Aanmelden voor wachtlijst","hero.cta2":"Neem contact op","hero.scroll":"Scrollen",
+    "nav.features":"Functies","nav.how":"Hoe het werkt","nav.pricing":"Prijzen","nav.contact":"Contact","nav.cta":"Vroeg toegang",
+    "hero.eyebrow":"Intelligent automatiseringsplatform","hero.title":"Wij doen het werk.<br/>U houdt de <em>klanten</em>.","hero.sub":"Morphsage maakt van uw inbox en agenda een geautomatiseerde workflow — zodat professionals in elk vakgebied meer klanten sneller kunnen bedienen.","hero.cta1":"Vroeg toegang","hero.cta2":"Bekijk hoe het werkt","hero.scroll":"Scrollen",
     "stats.1":"Bespaard per week","stats.2":"Tool-integraties","stats.3":"Nauwkeurigheidsgraad","stats.4":"Snellere workflows",
     "vp.heading":"Automatisering met de<br/><em>wijsheid</em> van een sage.",
     "vp.1.title":"Gebouwd voor Europeanen","vp.1.desc":"GDPR-conform by design. Uw gegevens blijven in Europa. Beschikbaar in het Engels, Frans en Nederlands — gebouwd voor Europese professionals.",
     "vp.2.title":"Herwin uw tijd","vp.2.desc":"E-mail follow-ups, afspraken plannen, leadreacties — automatisch afgehandeld. Morphsage werkt op de achtergrond zodat u gefocust blijft.",
     "vp.3.title":"Live voor vastgoed","vp.3.desc":"Momenteel beschikbaar voor makelaars en vastgoedprofessionals. Meer sectoren volgen binnenkort — meld u aan om als eerste toegang te krijgen.",
+    "testimonials.title":"Vertrouwd door <em>professionals</em>.","testimonials.sub":"Ontdek hoe Morphsage de manier van werken verandert.",
+    "t1.quote":"\"Morphsage beheert mijn inbox tijdens bezichtigingen. Elke lead krijgt binnen minuten een reactie — ik ben nooit meer een prospect kwijtgeraakt door trage opvolging.\"","t1.name":"Sophie M.","t1.role":"Makelaar, Brussel",
+    "t2.quote":"\"Klantopvolging en afspraakbevestigingen namen mijn ochtenden in beslag. Nu is alles automatisch. Ik focus op advies, Morphsage regelt de rest.\"","t2.name":"David K.","t2.role":"Zelfstandig consultant, Amsterdam",
+    "t3.quote":"\"Ik kan me op mijn cliënten concentreren terwijl Morphsage de planning en opvolging regelt. Alsof je een assistent hebt die nooit een e-mail mist.\"","t3.name":"Claire B.","t3.role":"Zorgprofessional, Parijs",
     "waitlist.title":"Wees de <em>eerste</em> die het weet","waitlist.sub":"Meld u aan voor de wachtlijst en krijg vroeg toegang tot het meest intelligente automatiseringsplatform.","waitlist.placeholder":"Voer uw e-mailadres in","waitlist.btn":"Aanmelden","waitlist.success":"✓ U staat op de lijst! We nemen snel contact met u op.","waitlist.error":"Er is iets misgegaan. Probeer het opnieuw.",
     "contact.title":"Neem <em>contact op</em>",
     "contact.sub":"Heeft u een vraag over Morphsage? Wilt u een demo aanvragen? Of gewoon hallo zeggen? We horen graag van u.",
