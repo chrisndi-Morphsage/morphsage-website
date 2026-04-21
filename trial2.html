@@ -133,10 +133,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 4rem;
-  background: rgba(244,244,248,0.88);
+  background: rgba(26,26,46,0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .logo {
   display: flex;
@@ -150,7 +150,7 @@ nav {
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: 600;
-  color: var(--charcoal);
+  color: var(--white);
   letter-spacing: 0.01em;
 }
 .logo-text em { font-style: normal; color: var(--teal); }
@@ -166,7 +166,7 @@ nav {
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: rgba(255,255,255,0.5);
   transition: color 0.2s;
   font-weight: 400;
 }
@@ -206,7 +206,7 @@ nav {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--charcoal);
+  background: rgba(255,255,255,0.7);
   border-radius: 2px;
   transition: all 0.3s;
 }
@@ -214,7 +214,7 @@ nav {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(244,244,248,0.97);
+  background: rgba(26,26,46,0.98);
   backdrop-filter: blur(24px);
   z-index: 490;
   flex-direction: column;
@@ -225,7 +225,7 @@ nav {
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
   font-size: 1.4rem;
-  color: var(--charcoal);
+  color: var(--white);
   font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -387,19 +387,19 @@ nav {
    3. LOGO STRIP
 ══════════════════════════════════ */
 #logos {
-  background: #EEEEF3;
+  background: linear-gradient(135deg, rgba(212,144,26,0.08) 0%, rgba(212,144,26,0.04) 100%);
   padding: 2.5rem 2rem;
   text-align: center;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  border-top: 1px solid rgba(212,144,26,0.18);
+  border-bottom: 1px solid rgba(212,144,26,0.18);
 }
 .logos-label {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--gold);
   margin-bottom: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 .logo-strip {
   display: flex;
@@ -411,11 +411,13 @@ nav {
 .logo-name {
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(26,26,46,0.3);
+  color: rgba(212,144,26,0.55);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-family: var(--font-display);
+  transition: color 0.2s;
 }
+.logo-name:hover { color: var(--gold); }
 
 /* ══════════════════════════════════
    4. FEATURES
@@ -742,10 +744,17 @@ nav {
 }
 .author-name { font-weight: 500; color: var(--charcoal); }
 .testimonial-visual {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--indigo) 100%);
   position: relative;
   overflow: hidden;
   min-height: 280px;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--indigo) 100%);
+}
+.testimonial-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 .testimonial-visual::before {
   content: '"';
@@ -1188,8 +1197,8 @@ footer {
 
   <div class="nav-right">
     <svg class="nav-email-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="2" y="4.5" width="16" height="11" rx="2" stroke="#1A1A2E" stroke-width="1.4"/>
-      <path d="M2 7l8 5 8-5" stroke="#1A1A2E" stroke-width="1.4" stroke-linejoin="round"/>
+      <rect x="2" y="4.5" width="16" height="11" rx="2" stroke="rgba(255,255,255,0.5)" stroke-width="1.4"/>
+      <path d="M2 7l8 5 8-5" stroke="rgba(255,255,255,0.5)" stroke-width="1.4" stroke-linejoin="round"/>
     </svg>
     <a href="#demo" class="nav-cta">Get early access</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -1244,22 +1253,30 @@ footer {
     <div class="mockup-title">Email Automation Pipeline</div>
     <div class="workflow">
       <div class="wf-step">
-        <div class="wf-dot teal">📨</div>
+        <div class="wf-dot teal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 7 10-7"/></svg>
+        </div>
         <div class="wf-label">New email<br>received</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
-        <div class="wf-dot gold">🧠</div>
+        <div class="wf-dot gold">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
         <div class="wf-label">Classify<br>intent</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
-        <div class="wf-dot teal">✍️</div>
+        <div class="wf-dot teal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
         <div class="wf-label">Draft<br>reply</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
-        <div class="wf-dot indigo">✅</div>
+        <div class="wf-dot indigo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </div>
         <div class="wf-label">Send<br>&amp; log</div>
       </div>
     </div>
@@ -1561,7 +1578,7 @@ footer {
               <span class="author-name">Sophie M.</span> — Real Estate Agent, Brussels
             </div>
           </div>
-          <div class="testimonial-visual"></div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=600&fit=crop&crop=face" alt="Sophie M." loading="lazy"/></div>
         </div>
 
         <!-- Slide 2 (hidden) -->
@@ -1576,7 +1593,7 @@ footer {
               <span class="author-name">David K.</span> — Independent Consultant, Amsterdam
             </div>
           </div>
-          <div class="testimonial-visual" style="background:linear-gradient(135deg,var(--gold),var(--indigo));"></div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face" alt="David K." loading="lazy"/></div>
         </div>
 
         <!-- Slide 3 (hidden) -->
@@ -1591,7 +1608,7 @@ footer {
               <span class="author-name">Claire B.</span> — Healthcare Professional, Paris
             </div>
           </div>
-          <div class="testimonial-visual" style="background:linear-gradient(135deg,var(--indigo),#5a3da0);"></div>
+          <div class="testimonial-visual"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop&crop=face" alt="Claire B." loading="lazy"/></div>
         </div>
 
       </div>
