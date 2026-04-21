@@ -1328,6 +1328,11 @@ footer {
   .cta-card { padding: 2rem 1.5rem; }
   .icon-grid { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
 }
+.lang-switcher { display:flex; align-items:center; gap:.35rem; }
+.lang-btn { background:transparent; border:1px solid rgba(0,201,177,.2); color:rgba(255,255,255,.5); padding:.28rem .55rem; border-radius:3px; font-family:var(--font-body); font-size:.7rem; letter-spacing:.08em; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { border-color:var(--teal); color:var(--teal); }
+.lang-btn.active { background:rgba(0,201,177,.12); border-color:var(--teal); color:var(--teal); }
+.mobile-lang { display:flex; gap:.5rem; padding:.75rem 2rem 1rem; }
 </style>
 </head>
 <body>
@@ -1360,11 +1365,11 @@ footer {
   </a>
 
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#integrations">How it Works</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+    <li><a href="#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="#integrations" data-i18n="nav.how">How it Works</a></li>
+    <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
   </ul>
 
   <div class="nav-right">
@@ -1372,7 +1377,12 @@ footer {
       <rect x="2" y="4.5" width="16" height="11" rx="2" stroke="rgba(255,255,255,0.5)" stroke-width="1.4"/>
       <path d="M2 7l8 5 8-5" stroke="rgba(255,255,255,0.5)" stroke-width="1.4" stroke-linejoin="round"/>
     </svg>
-    <a href="#demo" class="nav-cta">Get early access</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-nl" onclick="setLang('nl')">NL</button>
+    </div>
+    <a href="#demo" class="nav-cta" data-i18n="nav.cta">Get early access</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -1381,80 +1391,84 @@ footer {
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#hero"         onclick="closeMobile()">Home</a>
-  <a href="#features"     onclick="closeMobile()">Features</a>
-  <a href="#integrations" onclick="closeMobile()">How it Works</a>
-  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
-  <a href="#faq"          onclick="closeMobile()">FAQ</a>
-  <a href="#demo"         onclick="closeMobile()" style="color:var(--teal)">Get early access →</a>
+  <a href="#hero"         onclick="closeMobile()" data-i18n="nav.home">Home</a>
+  <a href="#features"     onclick="closeMobile()" data-i18n="nav.features">Features</a>
+  <a href="#integrations" onclick="closeMobile()" data-i18n="nav.how">How it Works</a>
+  <a href="#testimonials" onclick="closeMobile()" data-i18n="nav.testimonials">Testimonials</a>
+  <a href="#faq"          onclick="closeMobile()" data-i18n="nav.faq">FAQ</a>
+  <a href="#demo"         onclick="closeMobile()" style="color:var(--teal)" data-i18n="nav.cta">Get early access →</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en');closeMobile()">EN</button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr');closeMobile()">FR</button>
+    <button class="lang-btn" data-lang="nl" onclick="setLang('nl');closeMobile()">NL</button>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════
      2. HERO
 ══════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-eyebrow fade-up">Intelligent Automation Platform</div>
-  <h1 class="hero-h1 fade-up delay-1">
+  <div class="hero-eyebrow fade-up" data-i18n="hero.eyebrow">Intelligent Automation Platform</div>
+  <h1 class="hero-h1 fade-up delay-1" data-i18n-html="hero.title">
     We handle the work.<br>
     You keep the <em>clients.</em>
   </h1>
-  <p class="hero-sub fade-up delay-2">
+  <p class="hero-sub fade-up delay-2" data-i18n="hero.sub">
     Morphsage turns your inbox and calendar into an automated workflow — so professionals in any field can serve more clients, faster.
   </p>
   <div class="hero-ctas fade-up delay-3">
-    <a href="#integrations" class="btn btn-ghost">See how it works</a>
-    <a href="#demo"         class="btn btn-teal btn-lg">Get early access →</a>
+    <a href="#integrations" class="btn btn-ghost" data-i18n="hero.cta2">See how it works</a>
+    <a href="#demo"         class="btn btn-teal btn-lg" data-i18n="hero.cta1">Get early access →</a>
   </div>
   <div class="trust-line fade-up delay-4">
     <span class="trust-item">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#00C9B1" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#00C9B1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Quick setup
+      <span data-i18n="trust.setup">Quick setup</span>
     </span>
     <span class="trust-item">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="6" width="8" height="6" rx="1.5" stroke="#00C9B1" stroke-width="1.3"/><path d="M5 6V4.5a2 2 0 014 0V6" stroke="#00C9B1" stroke-width="1.3" stroke-linecap="round"/></svg>
-      GDPR compliant
+      <span data-i18n="trust.gdpr">GDPR compliant</span>
     </span>
     <span class="trust-item">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5l5 2v4c0 2.5-2 4.5-5 5.5C4 12 2 10 2 7.5v-4l5-2z" stroke="#00C9B1" stroke-width="1.3" stroke-linejoin="round"/></svg>
-      European servers
+      <span data-i18n="trust.servers">European servers</span>
     </span>
   </div>
 
   <!-- Workflow mockup -->
   <div class="hero-mockup fade-up delay-4">
-    <div class="mockup-title">Email Automation Pipeline</div>
+    <div class="mockup-title" data-i18n="pipeline.title">Email Automation Pipeline</div>
     <div class="workflow">
       <div class="wf-step">
         <div class="wf-dot teal">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 7 10-7"/></svg>
         </div>
-        <div class="wf-label">New email<br>received</div>
+        <div class="wf-label" data-i18n-html="pipeline.step1">New email<br>received</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
         <div class="wf-dot gold">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </div>
-        <div class="wf-label">Classify<br>intent</div>
+        <div class="wf-label" data-i18n-html="pipeline.step2">Classify<br>intent</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
         <div class="wf-dot teal">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <div class="wf-label">Draft<br>reply</div>
+        <div class="wf-label" data-i18n-html="pipeline.step3">Draft<br>reply</div>
       </div>
       <div class="wf-arrow"></div>
       <div class="wf-step">
         <div class="wf-dot indigo">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
         </div>
-        <div class="wf-label">Send<br>&amp; log</div>
+        <div class="wf-label" data-i18n-html="pipeline.step4">Send<br>&amp; log</div>
       </div>
     </div>
     <div class="mockup-status">
-      <div class="status-dot"></div>
-      Pipeline active — 3 emails processed in the last minute
+      <div class="status-dot"></div><span data-i18n="pipeline.status">Pipeline active — 3 emails processed in the last minute</span>
     </div>
   </div>
 </section>
@@ -1463,7 +1477,7 @@ footer {
      3. LOGO STRIP
 ══════════════════════════════════ -->
 <section id="logos">
-  <div class="logos-label">Trusted by professionals across Europe</div>
+  <div class="logos-label" data-i18n="logos.label">Trusted by professionals across Europe</div>
   <div class="logo-marquee">
     <div class="logo-strip">
       <span class="logo-name">Immo Vlaams</span><span class="logo-sep">·</span>
@@ -1496,10 +1510,10 @@ footer {
     <!-- Row A: text left, visual right -->
     <div class="feature-row fade-up">
       <div class="feature-text">
-        <div class="eyebrow">✦ Automated Inbox</div>
-        <h2>Save hours every day</h2>
-        <p>Let Morphsage handle email follow-ups, appointment replies, and lead responses — so you can focus on your clients, not your inbox.</p>
-        <a href="#demo" class="btn btn-teal" style="align-self:flex-start">Request your demo →</a>
+        <div class="eyebrow">✦ <span data-i18n="feat1.eyebrow">Automated Inbox</span></div>
+        <h2 data-i18n="feat1.title">Save hours every day</h2>
+        <p data-i18n="feat1.desc">Let Morphsage handle email follow-ups, appointment replies, and lead responses — so you can focus on your clients, not your inbox.</p>
+        <a href="#demo" class="btn btn-teal" style="align-self:flex-start" data-i18n="feat.cta">Request your demo →</a>
       </div>
       <div style="display:flex;justify-content:center;">
         <div class="email-card">
@@ -1570,10 +1584,10 @@ footer {
         </div>
       </div>
       <div class="feature-text">
-        <div class="eyebrow">✦ Real-Time Insights</div>
-        <h2>Make informed decisions instantly</h2>
-        <p>Get instant visibility into your email volume, response rates, and lead pipeline — updated in real time.</p>
-        <a href="#demo" class="btn btn-teal" style="align-self:flex-start">Request your demo →</a>
+        <div class="eyebrow">✦ <span data-i18n="feat2.eyebrow">Real-Time Insights</span></div>
+        <h2 data-i18n="feat2.title">Make informed decisions instantly</h2>
+        <p data-i18n="feat2.desc">Get instant visibility into your email volume, response rates, and lead pipeline — updated in real time.</p>
+        <a href="#demo" class="btn btn-teal" style="align-self:flex-start" data-i18n="feat.cta">Request your demo →</a>
       </div>
     </div>
 
@@ -1587,7 +1601,7 @@ footer {
   <div class="story-sticky">
     <div class="story-top">
       <div class="story-top-inner">
-        <div class="eyebrow" style="margin-bottom:0;">A day with Morphsage</div>
+        <div class="eyebrow" style="margin-bottom:0;" data-i18n="story.eyebrow">A day with Morphsage</div>
         <div class="story-meta">
           <span>request</span><span>·</span><span>orchestrate</span><span>·</span><span>resolve</span>
         </div>
@@ -1668,10 +1682,10 @@ footer {
 <section id="integrations">
   <div class="integrations-inner container">
     <div class="integrations-text fade-up">
-      <div class="eyebrow">✦ Seamless Integrations</div>
-      <h2>Connect all your tools in one place</h2>
-      <p>Gmail, Google Calendar, CRM, and more — Morphsage connects to your existing stack in minutes.</p>
-      <a href="#demo" class="btn btn-teal" style="align-self:flex-start">Request your demo →</a>
+      <div class="eyebrow">✦ <span data-i18n="integ.eyebrow">Seamless Integrations</span></div>
+      <h2 data-i18n="integ.title">Connect all your tools in one place</h2>
+      <p data-i18n="integ.desc">Gmail, Google Calendar, CRM, and more — Morphsage connects to your existing stack in minutes.</p>
+      <a href="#demo" class="btn btn-teal" style="align-self:flex-start" data-i18n="feat.cta">Request your demo →</a>
     </div>
 
     <div class="icon-grid fade-up delay-2">
@@ -1754,44 +1768,44 @@ footer {
 ══════════════════════════════════ -->
 <section id="comparison">
   <div class="container" style="max-width:900px;margin:0 auto;">
-    <div class="eyebrow fade-up">✦ Stay Ahead With Automation</div>
-    <h2 class="fade-up delay-1" style="color:var(--white);font-family:var(--font-body);font-weight:600;font-size:clamp(1.75rem,3.5vw,2.6rem);margin-bottom:0.75rem;">Your competitors are automating for a reason.</h2>
-    <p class="lead fade-up delay-2" style="color:rgba(255,255,255,0.45);margin:0 auto 3rem;">See how Morphsage transforms your day-to-day workflow.</p>
+    <div class="eyebrow fade-up">✦ <span data-i18n="comp.eyebrow">Stay Ahead With Automation</span></div>
+    <h2 class="fade-up delay-1" style="color:var(--white);font-family:var(--font-body);font-weight:600;font-size:clamp(1.75rem,3.5vw,2.6rem);margin-bottom:0.75rem;" data-i18n="comp.title">Your competitors are automating for a reason.</h2>
+    <p class="lead fade-up delay-2" style="color:rgba(255,255,255,0.45);margin:0 auto 3rem;" data-i18n="comp.desc">See how Morphsage transforms your day-to-day workflow.</p>
 
     <div style="overflow-x:auto;" class="fade-up delay-3">
       <table class="comparison-table">
         <thead>
           <tr>
             <th style="background:rgba(255,255,255,0.03);"></th>
-            <th class="col-without">Without Morphsage</th>
-            <th class="col-with">✦ With Morphsage</th>
+            <th class="col-without" data-i18n="comp.without">Without Morphsage</th>
+            <th class="col-with" data-i18n-html="comp.with">✦ With Morphsage</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Task Completion</td>
-            <td class="col-without">Several days</td>
-            <td class="col-with"><span class="check-teal">✓</span> Instantly</td>
+            <td data-i18n="comp.task">Task Completion</td>
+            <td class="col-without" data-i18n="comp.task.without">Several days</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.task.with">Instantly</span></td>
           </tr>
           <tr>
-            <td>Error Rate</td>
-            <td class="col-without">Frequent</td>
-            <td class="col-with"><span class="check-teal">✓</span> Near-zero</td>
+            <td data-i18n="comp.error">Error Rate</td>
+            <td class="col-without" data-i18n="comp.error.without">Frequent</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.error.with">Near-zero</span></td>
           </tr>
           <tr>
-            <td>Data Visibility</td>
-            <td class="col-without">Fragmented</td>
-            <td class="col-with"><span class="check-teal">✓</span> Real-Time</td>
+            <td data-i18n="comp.visibility">Data Visibility</td>
+            <td class="col-without" data-i18n="comp.visibility.without">Fragmented</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.visibility.with">Real-Time</span></td>
           </tr>
           <tr>
-            <td>Email Follow-up</td>
-            <td class="col-without">Manual</td>
-            <td class="col-with"><span class="check-teal">✓</span> Automatic</td>
+            <td data-i18n="comp.followup">Email Follow-up</td>
+            <td class="col-without" data-i18n="comp.followup.without">Manual</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.followup.with">Automatic</span></td>
           </tr>
           <tr>
-            <td>Onboarding</td>
-            <td class="col-without">Weeks</td>
-            <td class="col-with"><span class="check-teal">✓</span> Minutes</td>
+            <td data-i18n="comp.onboarding">Onboarding</td>
+            <td class="col-without" data-i18n="comp.onboarding.without">Weeks</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.onboarding.with">Minutes</span></td>
           </tr>
           <tr>
             <td>Scalability</td>
@@ -1804,14 +1818,14 @@ footer {
             <td class="col-with"><span class="check-teal">✓</span></td>
           </tr>
           <tr>
-            <td>Decision-Making</td>
-            <td class="col-without">Slow</td>
-            <td class="col-with"><span class="check-teal">✓</span> Rapid &amp; Data-Driven</td>
+            <td data-i18n="comp.decisions">Decision-Making</td>
+            <td class="col-without" data-i18n="comp.decisions.without">Slow</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n-html="comp.decisions.with">Rapid &amp; Data-Driven</span></td>
           </tr>
           <tr>
-            <td>Productivity</td>
-            <td class="col-without">Mediocre</td>
-            <td class="col-with"><span class="check-teal">✓</span> Unstoppable</td>
+            <td data-i18n="comp.productivity">Productivity</td>
+            <td class="col-without" data-i18n="comp.productivity.without">Mediocre</td>
+            <td class="col-with"><span class="check-teal">✓</span> <span data-i18n="comp.productivity.with">Unstoppable</span></td>
           </tr>
         </tbody>
       </table>
@@ -1828,8 +1842,8 @@ footer {
 ══════════════════════════════════ -->
 <section id="testimonials">
   <div class="testimonials-inner">
-    <div class="eyebrow fade-up">★ Testimonials</div>
-    <h2 class="fade-up delay-1">What clients are saying</h2>
+    <div class="eyebrow fade-up" data-i18n="test.eyebrow">★ Testimonials</div>
+    <h2 class="fade-up delay-1" data-i18n="test.title">What clients are saying</h2>
 
     <div class="testimonial-carousel fade-up delay-2">
       <div id="carouselTrack">
@@ -1837,12 +1851,12 @@ footer {
         <!-- Slide 1 -->
         <div class="testimonial-card" id="slide-0">
           <div class="testimonial-content">
-            <span class="company-badge">Real Estate · Brussels</span>
-            <p class="quote-text">"Morphsage replies to every lead within minutes. I never lose a prospect to slow follow-up anymore. It's like having a full-time assistant."</p>
+            <span class="company-badge" data-i18n="t1.badge">Real Estate · Brussels</span>
+            <p class="quote-text" data-i18n="t1.quote">"Morphsage replies to every lead within minutes. I never lose a prospect to slow follow-up anymore. It's like having a full-time assistant."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t1.author">
               <span class="author-name">Sophie M.</span> — Real Estate Agent, Brussels
             </div>
           </div>
@@ -1852,12 +1866,12 @@ footer {
         <!-- Slide 2 (hidden) -->
         <div class="testimonial-card" id="slide-1" style="display:none;">
           <div class="testimonial-content">
-            <span class="company-badge">Consulting · Amsterdam</span>
-            <p class="quote-text">"Client follow-ups used to eat my mornings. Now they're automatic. I focus on the work that matters."</p>
+            <span class="company-badge" data-i18n="t2.badge">Consulting · Amsterdam</span>
+            <p class="quote-text" data-i18n="t2.quote">"Client follow-ups used to eat my mornings. Now they're automatic. I focus on the work that matters."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t2.author">
               <span class="author-name">David K.</span> — Independent Consultant, Amsterdam
             </div>
           </div>
@@ -1867,12 +1881,12 @@ footer {
         <!-- Slide 3 (hidden) -->
         <div class="testimonial-card" id="slide-2" style="display:none;">
           <div class="testimonial-content">
-            <span class="company-badge">Healthcare · Paris</span>
-            <p class="quote-text">"Scheduling and follow-up are completely handled. I can give 100% to my patients."</p>
+            <span class="company-badge" data-i18n="t3.badge">Healthcare · Paris</span>
+            <p class="quote-text" data-i18n="t3.quote">"Scheduling and follow-up are completely handled. I can give 100% to my patients."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t3.author">
               <span class="author-name">Claire B.</span> — Healthcare Professional, Paris
             </div>
           </div>
@@ -1882,12 +1896,12 @@ footer {
         <!-- Slide 4 (hidden) -->
         <div class="testimonial-card" id="slide-3" style="display:none;">
           <div class="testimonial-content">
-            <span class="company-badge">Marketing · London</span>
-            <p class="quote-text">"I was skeptical at first — I'm 22 and thought I could manage my own inbox. Morphsage proved me wrong in the best way. My response time dropped from hours to minutes."</p>
+            <span class="company-badge" data-i18n="t4.badge">Marketing · London</span>
+            <p class="quote-text" data-i18n="t4.quote">"I was skeptical at first — I'm 22 and thought I could manage my own inbox. Morphsage proved me wrong in the best way. My response time dropped from hours to minutes."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t4.author">
               <span class="author-name">Amara J.</span> — Marketing Coordinator, London
             </div>
           </div>
@@ -1897,12 +1911,12 @@ footer {
         <!-- Slide 5 (hidden) -->
         <div class="testimonial-card" id="slide-4" style="display:none;">
           <div class="testimonial-content">
-            <span class="company-badge">Real Estate · Lyon</span>
-            <p class="quote-text">"At my stage of career, time is everything. Morphsage gives me back hours every week. My clients notice the difference — replies arrive before they even check their phone."</p>
+            <span class="company-badge" data-i18n="t5.badge">Real Estate · Lyon</span>
+            <p class="quote-text" data-i18n="t5.quote">"At my stage of career, time is everything. Morphsage gives me back hours every week. My clients notice the difference — replies arrive before they even check their phone."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t5.author">
               <span class="author-name">Henri V.</span> — Senior Broker, Lyon
             </div>
           </div>
@@ -1912,12 +1926,12 @@ footer {
         <!-- Slide 6 (hidden) -->
         <div class="testimonial-card" id="slide-5" style="display:none;">
           <div class="testimonial-content">
-            <span class="company-badge">Finance · Singapore</span>
-            <p class="quote-text">"The precision is remarkable. Every client email classified correctly, every follow-up timed perfectly. It's the assistant I always needed but could never find."</p>
+            <span class="company-badge" data-i18n="t6.badge">Finance · Singapore</span>
+            <p class="quote-text" data-i18n="t6.quote">"The precision is remarkable. Every client email classified correctly, every follow-up timed perfectly. It's the assistant I always needed but could never find."</p>
             <div class="stars">
               <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
             </div>
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-i18n-html="t6.author">
               <span class="author-name">James L.</span> — Financial Advisor, Singapore
             </div>
           </div>
@@ -1951,49 +1965,49 @@ footer {
 ══════════════════════════════════ -->
 <section id="demo">
   <div class="demo-header fade-up">
-    <div class="eyebrow">Request a Demo</div>
-    <p>Book your demo and see how Morphsage transforms your workflow.</p>
+    <div class="eyebrow" data-i18n="demo.eyebrow">Request a Demo</div>
+    <p data-i18n="demo.sub">Book your demo and see how Morphsage transforms your workflow.</p>
   </div>
 
   <div class="form-card fade-up delay-2">
     <form id="demoForm">
       <div class="form-row">
         <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" name="firstName" placeholder="Sophie" required/>
+          <label for="firstName" data-i18n="form.firstname">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Sophie" data-i18n-placeholder="form.firstname.ph" required/>
         </div>
         <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Martin" required/>
+          <label for="lastName" data-i18n="form.lastname">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Martin" data-i18n-placeholder="form.lastname.ph" required/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group form-full">
-          <label for="email">Business Email</label>
-          <input type="email" id="email" name="email" placeholder="sophie@yourbusiness.eu" required/>
+          <label for="email" data-i18n="form.email">Business Email</label>
+          <input type="email" id="email" name="email" placeholder="sophie@yourbusiness.eu" data-i18n-placeholder="form.email.ph" required/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group form-full">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" placeholder="+32 2 000 00 00"/>
+          <label for="phone" data-i18n="form.phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="+32 2 000 00 00" data-i18n-placeholder="form.phone.ph"/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group form-full">
-          <label for="company">Company</label>
-          <input type="text" id="company" name="company" placeholder="Your company name"/>
+          <label for="company" data-i18n="form.company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Your company name" data-i18n-placeholder="form.company.ph"/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="demoDate">Earliest Date</label>
+          <label for="demoDate" data-i18n="form.date">Earliest Date</label>
           <input type="date" id="demoDate" name="demoDate"/>
         </div>
         <div class="form-group">
-          <label for="demoTime">Preferred Time</label>
+          <label for="demoTime" data-i18n="form.time">Preferred Time</label>
           <select id="demoTime" name="demoTime">
-            <option value="">Select a time slot</option>
+            <option value="" data-i18n="form.time.ph">Select a time slot</option>
             <option>09:00 – 10:00</option>
             <option>10:00 – 11:00</option>
             <option>11:00 – 12:00</option>
@@ -2005,17 +2019,17 @@ footer {
       </div>
       <div class="form-check">
         <input type="checkbox" id="privacy" name="privacy" required/>
-        <label for="privacy">
+        <label for="privacy" data-i18n-html="form.privacy">
           I agree to the <a href="#">Privacy Policy</a> and consent to Morphsage contacting me about this demo request. Your data is stored on European servers and never sold.
         </label>
       </div>
-      <button type="submit" class="btn-submit">Submit →</button>
+      <button type="submit" class="btn-submit" data-i18n="form.submit">Submit →</button>
     </form>
 
     <div class="form-success" id="formSuccess">
       <div class="success-icon">✓</div>
-      <h3>Demo request received!</h3>
-      <p>We'll be in touch within 24 hours to confirm your booking.</p>
+      <h3 data-i18n="form.success.title">Demo request received!</h3>
+      <p data-i18n="form.success.sub">We'll be in touch within 24 hours to confirm your booking.</p>
     </div>
   </div>
 
@@ -2040,57 +2054,57 @@ footer {
 ══════════════════════════════════ -->
 <section id="faq">
   <div class="faq-inner">
-    <div class="eyebrow fade-up">? Frequently Asked Questions</div>
-    <h2 class="fade-up delay-1">Common questions answered</h2>
+    <div class="eyebrow fade-up" data-i18n="faq.eyebrow">? Frequently Asked Questions</div>
+    <h2 class="fade-up delay-1" data-i18n="faq.title">Common questions answered</h2>
 
     <div class="accordion fade-up delay-2">
       <div class="accordion-item">
         <button class="accordion-trigger">
-          <span class="accordion-q">How secure is Morphsage?</span>
+          <span class="accordion-q" data-i18n="faq.q1">How secure is Morphsage?</span>
           <span class="accordion-icon">+</span>
         </button>
         <div class="accordion-body">
-          <p>We use industry-leading encryption and store all data on European servers. GDPR compliant by design — your data is never used to train models or shared with third parties.</p>
+          <p data-i18n="faq.a1">We use industry-leading encryption and store all data on European servers. GDPR compliant by design — your data is never used to train models or shared with third parties.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-trigger">
-          <span class="accordion-q">Can I integrate my existing tools?</span>
+          <span class="accordion-q" data-i18n="faq.q2">Can I integrate my existing tools?</span>
           <span class="accordion-icon">+</span>
         </button>
         <div class="accordion-body">
-          <p>Yes — Gmail, Google Calendar, and CRM integrations are live. More integrations are added regularly. If you need a specific integration, let us know and we'll prioritise it.</p>
+          <p data-i18n="faq.a2">Yes — Gmail, Google Calendar, and CRM integrations are live. More integrations are added regularly. If you need a specific integration, let us know and we'll prioritise it.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-trigger">
-          <span class="accordion-q">How quickly can I see results?</span>
+          <span class="accordion-q" data-i18n="faq.q3">How quickly can I see results?</span>
           <span class="accordion-icon">+</span>
         </button>
         <div class="accordion-body">
-          <p>Most users see time savings within the first week. Setup takes under 10 minutes — connect your Gmail, set your preferences, and Morphsage starts working immediately.</p>
+          <p data-i18n="faq.a3">Most users see time savings within the first week. Setup takes under 10 minutes — connect your Gmail, set your preferences, and Morphsage starts working immediately.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-trigger">
-          <span class="accordion-q">Do you offer customer support?</span>
+          <span class="accordion-q" data-i18n="faq.q4">Do you offer customer support?</span>
           <span class="accordion-icon">+</span>
         </button>
         <div class="accordion-body">
-          <p>Yes, all plans include email support. Pro plans get priority response within 2 hours. Our team is based in Europe and available during business hours across all EU time zones.</p>
+          <p data-i18n="faq.a4">Yes, all plans include email support. Pro plans get priority response within 2 hours. Our team is based in Europe and available during business hours across all EU time zones.</p>
         </div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-trigger">
-          <span class="accordion-q">Is there a free trial available?</span>
+          <span class="accordion-q" data-i18n="faq.q5">Is there a free trial available?</span>
           <span class="accordion-icon">+</span>
         </button>
         <div class="accordion-body">
-          <p>We offer a 14-day free trial with full access to all features. No credit card required. Cancel any time — no questions asked.</p>
+          <p data-i18n="faq.a5">We offer a 14-day free trial with full access to all features. No credit card required. Cancel any time — no questions asked.</p>
         </div>
       </div>
     </div>
@@ -2102,10 +2116,10 @@ footer {
 ══════════════════════════════════ -->
 <section id="cta-footer">
   <div class="cta-card fade-up">
-    <div class="eyebrow" style="justify-content:center;display:block;">✦ Get Started</div>
-    <h2>Ready to work smarter?</h2>
-    <p>If you're looking to save time and focus on what really matters, Morphsage is here for you.</p>
-    <a href="#demo" class="btn btn-teal btn-lg">Get early access →</a>
+    <div class="eyebrow" style="justify-content:center;display:block;" data-i18n="cta.eyebrow">✦ Get Started</div>
+    <h2 data-i18n="cta.title">Ready to work smarter?</h2>
+    <p data-i18n="cta.desc">If you're looking to save time and focus on what really matters, Morphsage is here for you.</p>
+    <a href="#demo" class="btn btn-teal btn-lg" data-i18n="nav.cta">Get early access</a>
 
     <div class="scroll-strip">
       <div class="scroll-track">
@@ -2142,7 +2156,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="footer-logo-text">Morph<em>sage</em></span>
-      <span class="footer-tagline">The intelligent automation platform for European professionals.</span>
+      <span class="footer-tagline" data-i18n="footer.tagline">The intelligent automation platform for European professionals.</span>
     </div>
 
     <div class="footer-socials">
@@ -2173,7 +2187,7 @@ footer {
       </a>
     </div>
 
-    <span class="footer-copy">© 2026 Morphsage Inc. All rights reserved.</span>
+    <span class="footer-copy" data-i18n="footer.copy">© 2026 Morphsage Inc. All rights reserved.</span>
   </div>
 </footer>
 
@@ -2308,6 +2322,196 @@ window.addEventListener('scroll', () => {
       : '';
   });
 }, { passive: true });
+
+/* ── i18n ── */
+const i18n = {
+  en: {
+    "nav.home":"Home","nav.features":"Features","nav.how":"How it Works","nav.testimonials":"Testimonials","nav.faq":"FAQ","nav.cta":"Get early access",
+    "hero.eyebrow":"Intelligent Automation Platform",
+    "hero.title":"We handle the work.<br>You keep the <em>clients.</em>",
+    "hero.sub":"Morphsage turns your inbox and calendar into an automated workflow — so professionals in any field can serve more clients, faster.",
+    "hero.cta1":"Get early access →","hero.cta2":"See how it works",
+    "trust.setup":"Quick setup","trust.gdpr":"GDPR compliant","trust.servers":"European servers",
+    "pipeline.title":"Email Automation Pipeline",
+    "pipeline.step1":"New email<br>received","pipeline.step2":"Classify<br>intent","pipeline.step3":"Draft<br>reply","pipeline.step4":"Send<br>&amp; log",
+    "pipeline.status":"Pipeline active — 3 emails processed in the last minute",
+    "logos.label":"Trusted by professionals across Europe",
+    "feat1.eyebrow":"Automated Inbox","feat1.title":"Save hours every day","feat1.desc":"Let Morphsage handle email follow-ups, appointment replies, and lead responses — so you can focus on your clients, not your inbox.","feat.cta":"Request your demo →",
+    "feat2.eyebrow":"Real-Time Insights","feat2.title":"Make informed decisions instantly","feat2.desc":"Get instant visibility into your email volume, response rates, and lead pipeline — updated in real time.",
+    "story.eyebrow":"A day with Morphsage",
+    "integ.eyebrow":"Seamless Integrations","integ.title":"Connect all your tools in one place","integ.desc":"Gmail, Google Calendar, CRM, and more — Morphsage connects to your existing stack in minutes.",
+    "comp.eyebrow":"Stay Ahead With Automation","comp.title":"Your competitors are automating for a reason.","comp.desc":"See how Morphsage transforms your day-to-day workflow.",
+    "comp.without":"Without Morphsage","comp.with":"✦ With Morphsage",
+    "comp.task":"Task Completion","comp.task.without":"Several days","comp.task.with":"Instantly",
+    "comp.error":"Error Rate","comp.error.without":"Frequent","comp.error.with":"Near-zero",
+    "comp.visibility":"Data Visibility","comp.visibility.without":"Fragmented","comp.visibility.with":"Real-Time",
+    "comp.followup":"Email Follow-up","comp.followup.without":"Manual","comp.followup.with":"Automatic",
+    "comp.onboarding":"Onboarding","comp.onboarding.without":"Weeks","comp.onboarding.with":"Minutes",
+    "comp.decisions":"Decision-Making","comp.decisions.without":"Slow","comp.decisions.with":"Rapid &amp; Data-Driven",
+    "comp.productivity":"Productivity","comp.productivity.without":"Mediocre","comp.productivity.with":"Unstoppable",
+    "test.eyebrow":"★ Testimonials","test.title":"What clients are saying",
+    "t1.badge":"Real Estate · Brussels","t1.quote":"\"Morphsage replies to every lead within minutes. I never lose a prospect to slow follow-up anymore. It's like having a full-time assistant.\"","t1.author":"<span class=\"author-name\">Sophie M.</span> — Real Estate Agent, Brussels",
+    "t2.badge":"Consulting · Amsterdam","t2.quote":"\"Client follow-ups used to eat my mornings. Now they're automatic. I focus on the work that matters.\"","t2.author":"<span class=\"author-name\">David K.</span> — Independent Consultant, Amsterdam",
+    "t3.badge":"Healthcare · Paris","t3.quote":"\"Scheduling and follow-up are completely handled. I can give 100% to my patients.\"","t3.author":"<span class=\"author-name\">Claire B.</span> — Healthcare Professional, Paris",
+    "t4.badge":"Marketing · London","t4.quote":"\"I was skeptical at first — I'm 22 and thought I could manage my own inbox. Morphsage proved me wrong in the best way. My response time dropped from hours to minutes.\"","t4.author":"<span class=\"author-name\">Amara J.</span> — Marketing Coordinator, London",
+    "t5.badge":"Real Estate · Lyon","t5.quote":"\"At my stage of career, time is everything. Morphsage gives me back hours every week. My clients notice the difference — replies arrive before they even check their phone.\"","t5.author":"<span class=\"author-name\">Henri V.</span> — Senior Broker, Lyon",
+    "t6.badge":"Finance · Singapore","t6.quote":"\"The precision is remarkable. Every client email classified correctly, every follow-up timed perfectly. It's the assistant I always needed but could never find.\"","t6.author":"<span class=\"author-name\">James L.</span> — Financial Advisor, Singapore",
+    "demo.eyebrow":"Request a Demo","demo.sub":"Book your demo and see how Morphsage transforms your workflow.",
+    "form.firstname":"First Name","form.firstname.ph":"Sophie","form.lastname":"Last Name","form.lastname.ph":"Martin",
+    "form.email":"Business Email","form.email.ph":"sophie@yourbusiness.eu",
+    "form.phone":"Phone","form.phone.ph":"+32 2 000 00 00",
+    "form.company":"Company","form.company.ph":"Your company name",
+    "form.date":"Earliest Date","form.time":"Preferred Time","form.time.ph":"Select a time slot",
+    "form.privacy":"I agree to the <a href=\"#\">Privacy Policy</a> and consent to Morphsage contacting me about this demo request. Your data is stored on European servers and never sold.",
+    "form.submit":"Submit →","form.success.title":"Demo request received!","form.success.sub":"We'll be in touch within 24 hours to confirm your booking.",
+    "faq.eyebrow":"? Frequently Asked Questions","faq.title":"Common questions answered",
+    "faq.q1":"How secure is Morphsage?","faq.a1":"We use industry-leading encryption and store all data on European servers. GDPR compliant by design — your data is never used to train models or shared with third parties.",
+    "faq.q2":"Can I integrate my existing tools?","faq.a2":"Yes — Gmail, Google Calendar, and CRM integrations are live. More integrations are added regularly. If you need a specific integration, let us know and we'll prioritise it.",
+    "faq.q3":"How quickly can I see results?","faq.a3":"Most users see time savings within the first week. Setup takes under 10 minutes — connect your Gmail, set your preferences, and Morphsage starts working immediately.",
+    "faq.q4":"Do you offer customer support?","faq.a4":"Yes, all plans include email support. Pro plans get priority response within 2 hours. Our team is based in Europe and available during business hours across all EU time zones.",
+    "faq.q5":"Is there a free trial available?","faq.a5":"We offer a 14-day free trial with full access to all features. No credit card required. Cancel any time — no questions asked.",
+    "cta.eyebrow":"✦ Get Started","cta.title":"Ready to work smarter?","cta.desc":"If you're looking to save time and focus on what really matters, Morphsage is here for you.",
+    "footer.tagline":"The intelligent automation platform for European professionals.",
+    "footer.copy":"© 2026 Morphsage Inc. All rights reserved."
+  },
+  fr: {
+    "nav.home":"Accueil","nav.features":"Fonctionnalités","nav.how":"Comment ça marche","nav.testimonials":"Témoignages","nav.faq":"FAQ","nav.cta":"Accès anticipé",
+    "hero.eyebrow":"Plateforme d'automatisation intelligente",
+    "hero.title":"Nous gérons le travail.<br>Vous gardez les <em>clients.</em>",
+    "hero.sub":"Morphsage transforme votre boîte mail et votre agenda en un flux de travail automatisé — pour que les professionnels de tous secteurs servent plus de clients, plus vite.",
+    "hero.cta1":"Accès anticipé →","hero.cta2":"Voir comment ça marche",
+    "trust.setup":"Installation rapide","trust.gdpr":"Conforme RGPD","trust.servers":"Serveurs européens",
+    "pipeline.title":"Pipeline d'automatisation email",
+    "pipeline.step1":"Nouvel email<br>reçu","pipeline.step2":"Classifier<br>l'intention","pipeline.step3":"Rédiger<br>la réponse","pipeline.step4":"Envoyer<br>&amp; journaliser",
+    "pipeline.status":"Pipeline actif — 3 emails traités à la dernière minute",
+    "logos.label":"Plébiscité par les professionnels à travers l'Europe",
+    "feat1.eyebrow":"Boîte mail automatisée","feat1.title":"Économisez des heures chaque jour","feat1.desc":"Laissez Morphsage gérer les relances email, les réponses aux rendez-vous et les prospects — pour que vous vous concentriez sur vos clients, pas sur votre boîte mail.","feat.cta":"Demander une démo →",
+    "feat2.eyebrow":"Insights en temps réel","feat2.title":"Prenez des décisions éclairées instantanément","feat2.desc":"Obtenez une visibilité instantanée sur votre volume d'emails, vos taux de réponse et votre pipeline de prospects — mis à jour en temps réel.",
+    "story.eyebrow":"Une journée avec Morphsage",
+    "integ.eyebrow":"Intégrations transparentes","integ.title":"Connectez tous vos outils en un seul endroit","integ.desc":"Gmail, Google Agenda, CRM et plus — Morphsage se connecte à votre stack existant en quelques minutes.",
+    "comp.eyebrow":"Restez en avance grâce à l'automatisation","comp.title":"Vos concurrents automatisent pour une bonne raison.","comp.desc":"Voyez comment Morphsage transforme votre flux de travail quotidien.",
+    "comp.without":"Sans Morphsage","comp.with":"✦ Avec Morphsage",
+    "comp.task":"Exécution des tâches","comp.task.without":"Plusieurs jours","comp.task.with":"Instantanément",
+    "comp.error":"Taux d'erreur","comp.error.without":"Fréquent","comp.error.with":"Quasi nul",
+    "comp.visibility":"Visibilité des données","comp.visibility.without":"Fragmentée","comp.visibility.with":"En temps réel",
+    "comp.followup":"Suivi des emails","comp.followup.without":"Manuel","comp.followup.with":"Automatique",
+    "comp.onboarding":"Prise en main","comp.onboarding.without":"Des semaines","comp.onboarding.with":"Minutes",
+    "comp.decisions":"Prise de décision","comp.decisions.without":"Lente","comp.decisions.with":"Rapide &amp; basée sur les données",
+    "comp.productivity":"Productivité","comp.productivity.without":"Médiocre","comp.productivity.with":"Inarrêtable",
+    "test.eyebrow":"★ Témoignages","test.title":"Ce que disent nos clients",
+    "t1.badge":"Immobilier · Bruxelles","t1.quote":"\"Morphsage répond à chaque prospect en quelques minutes. Je ne perds plus jamais un client à cause d'un suivi tardif. C'est comme avoir un assistant à temps plein.\"","t1.author":"<span class=\"author-name\">Sophie M.</span> — Agent immobilier, Bruxelles",
+    "t2.badge":"Conseil · Amsterdam","t2.quote":"\"Les relances clients me prenaient mes matinées. Maintenant tout est automatique. Je me concentre sur ce qui compte vraiment.\"","t2.author":"<span class=\"author-name\">David K.</span> — Consultant indépendant, Amsterdam",
+    "t3.badge":"Santé · Paris","t3.quote":"\"La planification et le suivi sont entièrement gérés. Je peux consacrer 100% à mes patients.\"","t3.author":"<span class=\"author-name\">Claire B.</span> — Professionnelle de santé, Paris",
+    "t4.badge":"Marketing · Londres","t4.quote":"\"J'étais sceptique au début — à 22 ans, je pensais gérer ma propre boîte mail. Morphsage m'a prouvé le contraire de la meilleure façon. Mon temps de réponse est passé d'heures à minutes.\"","t4.author":"<span class=\"author-name\">Amara J.</span> — Coordinatrice marketing, Londres",
+    "t5.badge":"Immobilier · Lyon","t5.quote":"\"À ce stade de ma carrière, le temps est précieux. Morphsage me rend des heures chaque semaine. Mes clients remarquent la différence — les réponses arrivent avant même qu'ils vérifient leur téléphone.\"","t5.author":"<span class=\"author-name\">Henri V.</span> — Courtier senior, Lyon",
+    "t6.badge":"Finance · Singapour","t6.quote":"\"La précision est remarquable. Chaque email client correctement classifié, chaque suivi parfaitement synchronisé. C'est l'assistant dont j'avais toujours eu besoin.\"","t6.author":"<span class=\"author-name\">James L.</span> — Conseiller financier, Singapour",
+    "demo.eyebrow":"Demander une démo","demo.sub":"Réservez votre démo et découvrez comment Morphsage transforme votre flux de travail.",
+    "form.firstname":"Prénom","form.firstname.ph":"Sophie","form.lastname":"Nom de famille","form.lastname.ph":"Martin",
+    "form.email":"Email professionnel","form.email.ph":"sophie@votreentreprise.eu",
+    "form.phone":"Téléphone","form.phone.ph":"+32 2 000 00 00",
+    "form.company":"Entreprise","form.company.ph":"Nom de votre entreprise",
+    "form.date":"Date la plus tôt","form.time":"Heure préférée","form.time.ph":"Choisir un créneau",
+    "form.privacy":"J'accepte la <a href=\"#\">Politique de confidentialité</a> et consens à ce que Morphsage me contacte concernant cette demande de démo. Vos données sont stockées sur des serveurs européens et ne sont jamais vendues.",
+    "form.submit":"Envoyer →","form.success.title":"Demande de démo reçue !","form.success.sub":"Nous vous contacterons dans les 24 heures pour confirmer votre réservation.",
+    "faq.eyebrow":"? Questions fréquentes","faq.title":"Questions courantes répondues",
+    "faq.q1":"Morphsage est-il sécurisé ?","faq.a1":"Nous utilisons un chiffrement de pointe et stockons toutes les données sur des serveurs européens. Conforme RGPD par conception — vos données ne sont jamais utilisées pour entraîner des modèles ni partagées avec des tiers.",
+    "faq.q2":"Puis-je intégrer mes outils existants ?","faq.a2":"Oui — Gmail, Google Agenda et les intégrations CRM sont actives. D'autres intégrations sont ajoutées régulièrement. Si vous avez besoin d'une intégration spécifique, dites-le nous et nous la prioriserons.",
+    "faq.q3":"Quand puis-je voir des résultats ?","faq.a3":"La plupart des utilisateurs voient des gains de temps dès la première semaine. La configuration prend moins de 10 minutes — connectez Gmail, définissez vos préférences et Morphsage commence immédiatement.",
+    "faq.q4":"Proposez-vous un support client ?","faq.a4":"Oui, tous les plans incluent un support par email. Les plans Pro bénéficient d'une réponse prioritaire en 2 heures. Notre équipe est basée en Europe et disponible pendant les heures de bureau dans tous les fuseaux horaires UE.",
+    "faq.q5":"Y a-t-il un essai gratuit ?","faq.a5":"Nous proposons un essai gratuit de 14 jours avec accès complet à toutes les fonctionnalités. Aucune carte de crédit requise. Annulez à tout moment — sans questions.",
+    "cta.eyebrow":"✦ Commencer","cta.title":"Prêt à travailler plus intelligemment ?","cta.desc":"Si vous souhaitez gagner du temps et vous concentrer sur ce qui compte vraiment, Morphsage est là pour vous.",
+    "footer.tagline":"La plateforme d'automatisation intelligente pour les professionnels européens.",
+    "footer.copy":"© 2026 Morphsage Inc. Tous droits réservés."
+  },
+  nl: {
+    "nav.home":"Home","nav.features":"Functies","nav.how":"Hoe het werkt","nav.testimonials":"Getuigenissen","nav.faq":"FAQ","nav.cta":"Vroeg toegang",
+    "hero.eyebrow":"Intelligent automatiseringsplatform",
+    "hero.title":"Wij doen het werk.<br>U houdt de <em>klanten.</em>",
+    "hero.sub":"Morphsage maakt van uw inbox en agenda een geautomatiseerde workflow — zodat professionals in elk vakgebied meer klanten sneller kunnen bedienen.",
+    "hero.cta1":"Vroeg toegang →","hero.cta2":"Bekijk hoe het werkt",
+    "trust.setup":"Snelle installatie","trust.gdpr":"AVG-conform","trust.servers":"Europese servers",
+    "pipeline.title":"E-mail automatiseringspipeline",
+    "pipeline.step1":"Nieuwe e-mail<br>ontvangen","pipeline.step2":"Intentie<br>classificeren","pipeline.step3":"Antwoord<br>opstellen","pipeline.step4":"Verzenden<br>&amp; loggen",
+    "pipeline.status":"Pipeline actief — 3 e-mails verwerkt in de laatste minuut",
+    "logos.label":"Vertrouwd door professionals in heel Europa",
+    "feat1.eyebrow":"Geautomatiseerde inbox","feat1.title":"Bespaar uren elke dag","feat1.desc":"Laat Morphsage e-mail follow-ups, afspraakantwoorden en leadreacties afhandelen — zodat u zich kunt concentreren op uw klanten, niet op uw inbox.","feat.cta":"Vraag uw demo aan →",
+    "feat2.eyebrow":"Realtime inzichten","feat2.title":"Neem direct weloverwogen beslissingen","feat2.desc":"Krijg direct inzicht in uw e-mailvolume, responspercentages en leadpipeline — realtime bijgewerkt.",
+    "story.eyebrow":"Een dag met Morphsage",
+    "integ.eyebrow":"Naadloze integraties","integ.title":"Verbind al uw tools op één plek","integ.desc":"Gmail, Google Agenda, CRM en meer — Morphsage verbindt met uw bestaande stack in minuten.",
+    "comp.eyebrow":"Blijf voorop met automatisering","comp.title":"Uw concurrenten automatiseren om een goede reden.","comp.desc":"Zie hoe Morphsage uw dagelijkse workflow transformeert.",
+    "comp.without":"Zonder Morphsage","comp.with":"✦ Met Morphsage",
+    "comp.task":"Taakuitvoering","comp.task.without":"Meerdere dagen","comp.task.with":"Direct",
+    "comp.error":"Foutpercentage","comp.error.without":"Frequent","comp.error.with":"Bijna nul",
+    "comp.visibility":"Gegevensoverzicht","comp.visibility.without":"Gefragmenteerd","comp.visibility.with":"Realtime",
+    "comp.followup":"E-mailopvolging","comp.followup.without":"Handmatig","comp.followup.with":"Automatisch",
+    "comp.onboarding":"Instelling","comp.onboarding.without":"Weken","comp.onboarding.with":"Minuten",
+    "comp.decisions":"Besluitvorming","comp.decisions.without":"Traag","comp.decisions.with":"Snel &amp; datagedreven",
+    "comp.productivity":"Productiviteit","comp.productivity.without":"Matig","comp.productivity.with":"Onstopbaar",
+    "test.eyebrow":"★ Getuigenissen","test.title":"Wat klanten zeggen",
+    "t1.badge":"Vastgoed · Brussel","t1.quote":"\"Morphsage beantwoordt elke lead binnen minuten. Ik verlies nooit meer een prospect door trage opvolging. Het is alsof je een fulltime assistent hebt.\"","t1.author":"<span class=\"author-name\">Sophie M.</span> — Makelaar, Brussel",
+    "t2.badge":"Advies · Amsterdam","t2.quote":"\"Klantopvolging nam mijn ochtenden in beslag. Nu is alles automatisch. Ik focus op wat echt telt.\"","t2.author":"<span class=\"author-name\">David K.</span> — Zelfstandig consultant, Amsterdam",
+    "t3.badge":"Gezondheidszorg · Parijs","t3.quote":"\"Planning en opvolging worden volledig afgehandeld. Ik kan 100% aandacht geven aan mijn patiënten.\"","t3.author":"<span class=\"author-name\">Claire B.</span> — Zorgprofessional, Parijs",
+    "t4.badge":"Marketing · Londen","t4.quote":"\"Ik was eerst sceptisch — op 22 dacht ik mijn eigen inbox te kunnen beheren. Morphsage bewees me het tegendeel op de beste manier. Mijn reactietijd daalde van uren naar minuten.\"","t4.author":"<span class=\"author-name\">Amara J.</span> — Marketingcoördinator, Londen",
+    "t5.badge":"Vastgoed · Lyon","t5.quote":"\"Op dit punt in mijn carrière is tijd alles. Morphsage geeft me wekelijks uren terug. Mijn klanten merken het verschil — antwoorden komen aan voordat ze hun telefoon controleren.\"","t5.author":"<span class=\"author-name\">Henri V.</span> — Senior makelaar, Lyon",
+    "t6.badge":"Financiën · Singapore","t6.quote":"\"De precisie is opmerkelijk. Elke klante-mail correct geclassificeerd, elke follow-up perfect getimed. Het is de assistent die ik altijd nodig had maar nooit kon vinden.\"","t6.author":"<span class=\"author-name\">James L.</span> — Financieel adviseur, Singapore",
+    "demo.eyebrow":"Demo aanvragen","demo.sub":"Boek uw demo en zie hoe Morphsage uw workflow transformeert.",
+    "form.firstname":"Voornaam","form.firstname.ph":"Sophie","form.lastname":"Achternaam","form.lastname.ph":"Martin",
+    "form.email":"Zakelijk e-mailadres","form.email.ph":"sophie@uwbedrijf.eu",
+    "form.phone":"Telefoon","form.phone.ph":"+32 2 000 00 00",
+    "form.company":"Bedrijf","form.company.ph":"Naam van uw bedrijf",
+    "form.date":"Vroegste datum","form.time":"Voorkeurstijd","form.time.ph":"Kies een tijdslot",
+    "form.privacy":"Ik ga akkoord met het <a href=\"#\">Privacybeleid</a> en geef toestemming aan Morphsage om contact met mij op te nemen over dit demoverzoek. Uw gegevens worden opgeslagen op Europese servers en nooit verkocht.",
+    "form.submit":"Versturen →","form.success.title":"Demoverzoek ontvangen!","form.success.sub":"We nemen binnen 24 uur contact met u op om uw boeking te bevestigen.",
+    "faq.eyebrow":"? Veelgestelde vragen","faq.title":"Veelgestelde vragen beantwoord",
+    "faq.q1":"Hoe veilig is Morphsage?","faq.a1":"We gebruiken toonaangevende versleuteling en slaan alle gegevens op Europese servers op. AVG-conform by design — uw gegevens worden nooit gebruikt om modellen te trainen of gedeeld met derden.",
+    "faq.q2":"Kan ik mijn bestaande tools integreren?","faq.a2":"Ja — Gmail, Google Agenda en CRM-integraties zijn live. Er worden regelmatig meer integraties toegevoegd. Als u een specifieke integratie nodig heeft, laat het ons weten en we geven het prioriteit.",
+    "faq.q3":"Hoe snel zie ik resultaten?","faq.a3":"De meeste gebruikers zien tijdsbesparing binnen de eerste week. Setup duurt minder dan 10 minuten — verbind uw Gmail, stel uw voorkeuren in en Morphsage begint onmiddellijk.",
+    "faq.q4":"Biedt u klantenservice?","faq.a4":"Ja, alle plannen bevatten e-mailsupport. Pro-plannen krijgen prioriteitsrespons binnen 2 uur. Ons team is gevestigd in Europa en beschikbaar tijdens kantooruren in alle EU-tijdzones.",
+    "faq.q5":"Is er een gratis proefperiode?","faq.a5":"We bieden een gratis proefperiode van 14 dagen met volledige toegang tot alle functies. Geen creditcard vereist. Annuleer op elk moment — zonder vragen.",
+    "cta.eyebrow":"✦ Aan de slag","cta.title":"Klaar om slimmer te werken?","cta.desc":"Als u tijd wilt besparen en u wilt concentreren op wat echt belangrijk is, is Morphsage er voor u.",
+    "footer.tagline":"Het intelligente automatiseringsplatform voor Europese professionals.",
+    "footer.copy":"© 2026 Morphsage Inc. Alle rechten voorbehouden."
+  }
+};
+
+let currentLang = (function(){ try { return localStorage.getItem('morphsage-lang') || 'en'; } catch(e) { return 'en'; } })();
+
+function setLang(lang) {
+  currentLang = lang;
+  try { localStorage.setItem('morphsage-lang', lang); } catch(e) {}
+  applyTranslations();
+  updateLangBtns();
+  document.documentElement.lang = lang;
+}
+
+function applyTranslations() {
+  const t = i18n[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (t[k] !== undefined) el.placeholder = t[k];
+  });
+}
+
+function updateLangBtns() {
+  ['en','fr','nl'].forEach(l => {
+    const b = document.getElementById('btn-' + l);
+    if (b) b.classList.toggle('active', l === currentLang);
+  });
+  document.querySelectorAll('.mobile-lang .lang-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang') === currentLang);
+  });
+}
+
+applyTranslations();
+updateLangBtns();
 </script>
 </body>
 </html>
