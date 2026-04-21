@@ -388,37 +388,64 @@ nav {
    3. LOGO STRIP
 ══════════════════════════════════ */
 #logos {
-  background: linear-gradient(135deg, rgba(212,144,26,0.08) 0%, rgba(212,144,26,0.04) 100%);
-  padding: 2.5rem 2rem;
+  background: var(--white);
+  padding: 2rem 0;
   text-align: center;
-  border-top: 1px solid rgba(212,144,26,0.18);
-  border-bottom: 1px solid rgba(212,144,26,0.18);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
 }
 .logos-label {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--teal);
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+}
+.logo-marquee::before,
+.logo-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.logo-marquee::before { left: 0; background: linear-gradient(90deg, var(--white), transparent); }
+.logo-marquee::after  { right: 0; background: linear-gradient(-90deg, var(--white), transparent); }
 .logo-strip {
   display: flex;
-  gap: 3rem;
-  justify-content: center;
+  gap: 3.5rem;
   align-items: center;
-  flex-wrap: wrap;
+  width: max-content;
+  animation: marqueeLeft 20s linear infinite;
+}
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 .logo-name {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(212,144,26,0.55);
-  letter-spacing: 0.12em;
+  color: var(--gold);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-family: var(--font-display);
-  transition: color 0.2s;
+  white-space: nowrap;
+  opacity: 0.75;
+  transition: opacity 0.2s;
 }
-.logo-name:hover { color: var(--gold); }
+.logo-name:hover { opacity: 1; }
+.logo-sep {
+  color: rgba(212,144,26,0.25);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
 
 /* ══════════════════════════════════
    4. FEATURES
@@ -1426,12 +1453,26 @@ footer {
 ══════════════════════════════════ -->
 <section id="logos">
   <div class="logos-label">Trusted by professionals across Europe</div>
-  <div class="logo-strip">
-    <span class="logo-name">Immo Vlaams</span>
-    <span class="logo-name">Cabinet Dupont</span>
-    <span class="logo-name">DocPlanning</span>
-    <span class="logo-name">LexOffice</span>
-    <span class="logo-name">FinAdvisors</span>
+  <div class="logo-marquee">
+    <div class="logo-strip">
+      <span class="logo-name">Immo Vlaams</span><span class="logo-sep">·</span>
+      <span class="logo-name">Cabinet Dupont</span><span class="logo-sep">·</span>
+      <span class="logo-name">DocPlanning</span><span class="logo-sep">·</span>
+      <span class="logo-name">LexOffice</span><span class="logo-sep">·</span>
+      <span class="logo-name">FinAdvisors</span><span class="logo-sep">·</span>
+      <span class="logo-name">Immo Brussel</span><span class="logo-sep">·</span>
+      <span class="logo-name">Atelier Conseil</span><span class="logo-sep">·</span>
+      <span class="logo-name">MedConnect</span><span class="logo-sep">·</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="logo-name">Immo Vlaams</span><span class="logo-sep">·</span>
+      <span class="logo-name">Cabinet Dupont</span><span class="logo-sep">·</span>
+      <span class="logo-name">DocPlanning</span><span class="logo-sep">·</span>
+      <span class="logo-name">LexOffice</span><span class="logo-sep">·</span>
+      <span class="logo-name">FinAdvisors</span><span class="logo-sep">·</span>
+      <span class="logo-name">Immo Brussel</span><span class="logo-sep">·</span>
+      <span class="logo-name">Atelier Conseil</span><span class="logo-sep">·</span>
+      <span class="logo-name">MedConnect</span><span class="logo-sep">·</span>
+    </div>
   </div>
 </section>
 
