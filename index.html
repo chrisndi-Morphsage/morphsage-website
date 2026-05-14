@@ -39,6 +39,7 @@ button { font-family: var(--font-body); cursor: pointer; }
 /* ── Background blobs ── */
 .bg-blobs {
   position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  contain: paint;
 }
 .bg-blobs::before {
   content: '';
@@ -53,8 +54,8 @@ button { font-family: var(--font-body); cursor: pointer; }
 }
 @keyframes lineExpand { to { transform: scaleX(1); } }
 @keyframes blobDrift {
-  from { transform: translate(0,0) rotate(0deg); }
-  to   { transform: translate(2%,2%) rotate(1deg); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(2%, 2%, 0); }
 }
 section, nav, footer { position: relative; z-index: 1; }
 
