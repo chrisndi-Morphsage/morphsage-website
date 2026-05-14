@@ -887,6 +887,11 @@ nav {
   outline: none;
   width: 100%;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--charcoal);
+}
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--teal);
