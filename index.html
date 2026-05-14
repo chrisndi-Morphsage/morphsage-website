@@ -2304,8 +2304,38 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
 /* ── Demo form ── */
 document.getElementById('demoForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  document.getElementById('demoForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName  = document.getElementById('lastName').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const phone     = document.getElementById('phone').value.trim();
+  const company   = document.getElementById('company').value.trim();
+  const demoDate  = document.getElementById('demoDate').value;
+  const demoTime  = document.getElementById('demoTime').value;
+
+  emailjs.send('service_itxbfsk', 'template_dc7n5zj', {
+    product:    'MorphSage',
+    from_name:  firstName + ' ' + lastName,
+    from_email: email,
+    reply_to:   email,
+    subject:    'Demo Request — MorphSage',
+    message:    'Name: ' + firstName + ' ' + lastName +
+                '\nEmail: ' + email +
+                '\nPhone: ' + (phone || '—') +
+                '\nCompany: ' + (company || '—') +
+                '\nPreferred date: ' + (demoDate || '—') +
+                '\nPreferred time: ' + (demoTime || '—'),
+  }).then(() => {
+    document.getElementById('demoForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }).catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Submit →';
+    alert('Something went wrong. Please try again.');
+  });
 });
 
 /* ── Smooth nav highlight on scroll ── */
@@ -2513,5 +2543,7 @@ function updateLangBtns() {
 applyTranslations();
 updateLangBtns();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init({ publicKey: 'O8fIj3EBMSKoc2ED6' });</script>
 </body>
 </html>
