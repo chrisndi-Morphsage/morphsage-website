@@ -1098,6 +1098,7 @@ input:-webkit-autofill:focus {
   gap: 1rem;
   width: max-content;
   animation: scrollLeft 25s linear infinite;
+  will-change: transform;
 }
 @keyframes scrollLeft {
   from { transform: translateX(0); }
@@ -2032,6 +2033,7 @@ footer {
         </label>
       </div>
       <button type="submit" class="btn-submit" data-i18n="form.submit">Submit →</button>
+      <div id="formError" style="display:none;margin-top:12px;padding:12px 16px;border-radius:10px;background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.2);color:#dc2626;font-size:0.85rem;text-align:center;" data-i18n="form.error">Something went wrong. Please try again.</div>
     </form>
 
     <div class="form-success" id="formSuccess">
@@ -2044,15 +2046,15 @@ footer {
   <div class="trust-badges fade-up delay-3">
     <span class="trust-badge">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#00C9B1" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#00C9B1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Quick setup
+      <span data-i18n="trust.setup">Quick setup</span>
     </span>
     <span class="trust-badge">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="3" y="6" width="8" height="6" rx="1.5" stroke="#00C9B1" stroke-width="1.3"/><path d="M5 6V4.5a2 2 0 014 0V6" stroke="#00C9B1" stroke-width="1.3" stroke-linecap="round"/></svg>
-      GDPR compliant
+      <span data-i18n="trust.gdpr">GDPR compliant</span>
     </span>
     <span class="trust-badge">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1.5l5 2v4c0 2.5-2 4.5-5 5.5C4 12 2 10 2 7.5v-4l5-2z" stroke="#00C9B1" stroke-width="1.3" stroke-linejoin="round"/></svg>
-      European servers
+      <span data-i18n="trust.servers">European servers</span>
     </span>
   </div>
 </section>
@@ -2315,6 +2317,8 @@ document.getElementById('demoForm').addEventListener('submit', (e) => {
   const btn = document.querySelector('.btn-submit');
   btn.disabled = true;
   btn.textContent = '...';
+  const errEl = document.getElementById('formError');
+  if (errEl) errEl.style.display = 'none';
 
   const firstName = document.getElementById('firstName').value.trim();
   const lastName  = document.getElementById('lastName').value.trim();
@@ -2341,8 +2345,9 @@ document.getElementById('demoForm').addEventListener('submit', (e) => {
     document.getElementById('formSuccess').style.display = 'block';
   }).catch(() => {
     btn.disabled = false;
-    btn.textContent = 'Submit →';
-    alert('Something went wrong. Please try again.');
+    btn.textContent = i18n[currentLang]['form.submit'] || 'Submit →';
+    const errEl = document.getElementById('formError');
+    if (errEl) { errEl.style.display = 'block'; }
   });
 });
 
@@ -2401,7 +2406,7 @@ const i18n = {
     "form.company":"Company","form.company.ph":"Your company name",
     "form.date":"Earliest Date","form.time":"Preferred Time","form.time.ph":"Select a time slot",
     "form.privacy":"I agree to the <a href=\"#\">Privacy Policy</a> and consent to Morphsage contacting me about this demo request. Your data is stored on European servers and never sold.",
-    "form.submit":"Submit →","form.success.title":"Demo request received!","form.success.sub":"We'll be in touch within 24 hours to confirm your booking.",
+    "form.submit":"Submit →","form.error":"Something went wrong. Please try again.","form.success.title":"Demo request received!","form.success.sub":"We'll be in touch within 24 hours to confirm your booking.",
     "faq.eyebrow":"? Frequently Asked Questions","faq.title":"Common questions answered",
     "faq.q1":"How secure is Morphsage?","faq.a1":"We use industry-leading encryption and store all data on European servers. GDPR compliant by design — your data is never used to train models or shared with third parties.",
     "faq.q2":"Can I integrate my existing tools?","faq.a2":"Yes — Gmail, Google Calendar, and CRM integrations are live. More integrations are added regularly. If you need a specific integration, let us know and we'll prioritise it.",
@@ -2450,7 +2455,7 @@ const i18n = {
     "form.company":"Entreprise","form.company.ph":"Nom de votre entreprise",
     "form.date":"Date la plus tôt","form.time":"Heure préférée","form.time.ph":"Choisir un créneau",
     "form.privacy":"J'accepte la <a href=\"#\">Politique de confidentialité</a> et consens à ce que Morphsage me contacte concernant cette demande de démo. Vos données sont stockées sur des serveurs européens et ne sont jamais vendues.",
-    "form.submit":"Envoyer →","form.success.title":"Demande de démo reçue !","form.success.sub":"Nous vous contacterons dans les 24 heures pour confirmer votre réservation.",
+    "form.submit":"Envoyer →","form.error":"Une erreur s'est produite. Veuillez réessayer.","form.success.title":"Demande de démo reçue !","form.success.sub":"Nous vous contacterons dans les 24 heures pour confirmer votre réservation.",
     "faq.eyebrow":"? Questions fréquentes","faq.title":"Questions courantes répondues",
     "faq.q1":"Morphsage est-il sécurisé ?","faq.a1":"Nous utilisons un chiffrement de pointe et stockons toutes les données sur des serveurs européens. Conforme RGPD par conception — vos données ne sont jamais utilisées pour entraîner des modèles ni partagées avec des tiers.",
     "faq.q2":"Puis-je intégrer mes outils existants ?","faq.a2":"Oui — Gmail, Google Agenda et les intégrations CRM sont actives. D'autres intégrations sont ajoutées régulièrement. Si vous avez besoin d'une intégration spécifique, dites-le nous et nous la prioriserons.",
@@ -2499,7 +2504,7 @@ const i18n = {
     "form.company":"Bedrijf","form.company.ph":"Naam van uw bedrijf",
     "form.date":"Vroegste datum","form.time":"Voorkeurstijd","form.time.ph":"Kies een tijdslot",
     "form.privacy":"Ik ga akkoord met het <a href=\"#\">Privacybeleid</a> en geef toestemming aan Morphsage om contact met mij op te nemen over dit demoverzoek. Uw gegevens worden opgeslagen op Europese servers en nooit verkocht.",
-    "form.submit":"Versturen →","form.success.title":"Demoverzoek ontvangen!","form.success.sub":"We nemen binnen 24 uur contact met u op om uw boeking te bevestigen.",
+    "form.submit":"Versturen →","form.error":"Er is iets misgegaan. Probeer het opnieuw.","form.success.title":"Demoverzoek ontvangen!","form.success.sub":"We nemen binnen 24 uur contact met u op om uw boeking te bevestigen.",
     "faq.eyebrow":"? Veelgestelde vragen","faq.title":"Veelgestelde vragen beantwoord",
     "faq.q1":"Hoe veilig is Morphsage?","faq.a1":"We gebruiken toonaangevende versleuteling en slaan alle gegevens op Europese servers op. AVG-conform by design — uw gegevens worden nooit gebruikt om modellen te trainen of gedeeld met derden.",
     "faq.q2":"Kan ik mijn bestaande tools integreren?","faq.a2":"Ja — Gmail, Google Agenda en CRM-integraties zijn live. Er worden regelmatig meer integraties toegevoegd. Als u een specifieke integratie nodig heeft, laat het ons weten en we geven het prioriteit.",
